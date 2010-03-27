@@ -1,12 +1,12 @@
-<?php // $Id: continue.php,v 1.39.2.9 2009/03/17 16:24:47 mark-nielsen Exp $
+<?php // $Id: continue.php,v 1.39.2.10 2009/11/02 17:01:07 tjhunt Exp $
 /**
  * Action for processing page answers by users
  *
- * @version $Id: continue.php,v 1.39.2.9 2009/03/17 16:24:47 mark-nielsen Exp $
+ * @version $Id: continue.php,v 1.39.2.10 2009/11/02 17:01:07 tjhunt Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/
-    confirm_sesskey();
+    require_sesskey();
 
     require_once($CFG->dirroot.'/mod/lesson/pagelib.php');
     require_once($CFG->libdir.'/blocklib.php');

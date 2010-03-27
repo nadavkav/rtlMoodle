@@ -1,4 +1,4 @@
-<?php // $Id: lib.php,v 1.16.2.10 2009/09/11 10:06:28 danmarsden Exp $
+<?php // $Id: lib.php,v 1.16.2.13 2009/11/19 10:34:26 skodak Exp $
 /**
  * Library functions for mnet
  *
@@ -458,9 +458,9 @@ function mnet_permit_rpc_call($includefile, $functionname, $class=false) {
             h2s.hostid in ($id_list) AND
             h2s.publish = '1'";
 
-    $permissionobj = record_exists_sql($sql);
+    $permission = count_records_sql($sql);
 
-    if ($permissionobj === false && 'dangerous' != $CFG->mnet_dispatcher_mode) {
+    if (!$permission && 'dangerous' != $CFG->mnet_dispatcher_mode) {
         return RPC_FORBIDDENMETHOD;
     }
 

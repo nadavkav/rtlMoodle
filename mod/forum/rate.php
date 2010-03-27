@@ -1,4 +1,4 @@
-<?php // $Id: rate.php,v 1.24.2.4 2009/01/27 18:08:29 stronk7 Exp $
+<?php // $Id: rate.php,v 1.24.2.5 2009/11/21 15:33:34 skodak Exp $
 
 //  Collect ratings, store them, then return to where we came from
 
@@ -36,7 +36,7 @@
     $context = get_context_instance(CONTEXT_MODULE, $cm->id);
     require_capability('mod/forum:rate', $context);
 
-    if ($data = data_submitted()) {
+    if ($data = data_submitted() and confirm_sesskey()) {
 
         $discussionid = false;
 

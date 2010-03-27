@@ -16,7 +16,7 @@
  *    move
  *    moveit
  *    updatepage
- * @version $Id: lesson.php,v 1.47 2006/09/30 19:49:41 mark-nielsen Exp $
+ * @version $Id: lesson.php,v 1.47.8.1 2009/11/21 23:49:44 skodak Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/
@@ -29,7 +29,7 @@
     
     list($cm, $course, $lesson) = lesson_get_basics($id);
 
-    require_login($course->id);
+    require_login($course, false, $cm);
     $context = get_context_instance(CONTEXT_MODULE, $cm->id);
     
 /// Set up some general variables

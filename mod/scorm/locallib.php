@@ -1,4 +1,4 @@
-<?php  // $Id: locallib.php,v 1.46.2.31 2009/03/11 20:25:04 danmarsden Exp $
+<?php  // $Id: locallib.php,v 1.46.2.33 2009/11/19 10:40:17 skodak Exp $
 
 /// Constants and settings for module scorm
 define('UPDATE_NEVER', '0');

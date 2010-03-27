@@ -1,4 +1,4 @@
-<?php // $Id: category_class.php,v 1.32.2.9 2008/11/27 11:50:20 tjhunt Exp $
+<?php // $Id: category_class.php,v 1.32.2.10 2009/11/19 17:46:17 tjhunt Exp $
 /**
  * Class representing question categories
  *
@@ -62,7 +62,7 @@ class question_category_list_item extends list_item {
     function set_icon_html($first, $last, &$lastitem){
         global $CFG;
         $category = $this->item;
-        $this->icons['edit']= $this->image_icon(get_string('editthiscategory'),
+        $this->icons['edit']= $this->image_icon(get_string('editthiscategory', 'question'),
                 "{$CFG->wwwroot}/question/category.php?".$this->parentlist->pageurl->get_query_string(array('edit'=>$category->id)), 'edit');
         parent::set_icon_html($first, $last, $lastitem);
         $toplevel = ($this->parentlist->parentitem === null);//this is a top level item
@@ -148,7 +148,7 @@ class question_category_object {
         $this->str->delete         = get_string('delete');
         $this->str->moveup         = get_string('moveup');
         $this->str->movedown       = get_string('movedown');
-        $this->str->edit           = get_string('editthiscategory');
+        $this->str->edit           = get_string('editthiscategory', 'question');
         $this->str->hide           = get_string('hide');
         $this->str->publish        = get_string('publish', 'quiz');
         $this->str->order          = get_string('order');

@@ -1,5 +1,5 @@
 #!/usr/bin/php -f
-<?php // $Id: process_email.php,v 1.5.4.1 2008/01/24 02:17:17 scyrma Exp $
+<?php // $Id: process_email.php,v 1.5.4.2 2009/10/30 16:24:00 poltawski Exp $
 define('FULLME','cron'); // prevent warnings
 //error_reporting(0);
 //ini_set('display_errors',0);
@@ -72,7 +72,7 @@ while(!feof($fd)) {
 
 $function($modargs,$body); 
 
-fclose($handle);
+fclose($fd);
 
 
 

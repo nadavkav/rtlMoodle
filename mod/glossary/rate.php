@@ -1,4 +1,4 @@
-<?php   // $Id: rate.php,v 1.12.2.2 2009/05/06 09:15:46 stronk7 Exp $
+<?php   // $Id: rate.php,v 1.12.2.3 2009/11/20 08:50:52 skodak Exp $
 
 //  Collect ratings, store them, then return to where we came from
 
@@ -44,7 +44,7 @@
         $returnurl = $CFG->wwwroot.'/mod/glossary/view.php?id='.$cm->id;
     }
 
-    if ($data = data_submitted()) {    // form submitted
+    if ($data = data_submitted() and confirm_sesskey()) {    // form submitted
 
     /// Calculate scale values
         $scale_values = make_grades_menu($glossary->scale);

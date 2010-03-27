@@ -1,12 +1,12 @@
-<?php // $Id: insertpage.php,v 1.12 2006/09/30 19:49:41 mark-nielsen Exp $
+<?php // $Id: insertpage.php,v 1.12.8.1 2009/11/02 17:01:07 tjhunt Exp $
 /**
  * Action for processing the form from addpage action and inserts the page.
  *
- * @version $Id: insertpage.php,v 1.12 2006/09/30 19:49:41 mark-nielsen Exp $
+ * @version $Id: insertpage.php,v 1.12.8.1 2009/11/02 17:01:07 tjhunt Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/
-    confirm_sesskey();
+    require_sesskey();
 
     // check to see if the cancel button was pushed
     if (optional_param('cancel', '', PARAM_ALPHA)) {

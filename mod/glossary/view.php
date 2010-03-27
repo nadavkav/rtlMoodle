@@ -1,4 +1,4 @@
-<?php  // $Id: view.php,v 1.128.2.9 2009/01/16 08:59:39 dongsheng Exp $
+<?php  // $Id: view.php,v 1.128.2.10 2009/11/20 08:50:52 skodak Exp $
 /// This page prints a particular instance of glossary
     require_once("../../config.php");
     require_once("lib.php");
@@ -415,6 +415,7 @@
             echo "<form method=\"post\" action=\"rate.php\">";
             echo "<div>";
             echo "<input type=\"hidden\" name=\"glossaryid\" value=\"$glossary->id\" />";
+            echo "<input type=\"hidden\" name=\"sesskey\" value=\"".sesskey()."\" />";
         }
 
         foreach ($allentries as $entry) {

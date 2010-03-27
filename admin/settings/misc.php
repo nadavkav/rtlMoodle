@@ -1,4 +1,4 @@
-<?php // $Id: misc.php,v 1.14.2.6 2009/09/30 10:58:05 tjhunt Exp $
+<?php // $Id: misc.php,v 1.14.2.7 2009/10/26 08:56:22 stronk7 Exp $
 
 // * Miscellaneous settings
 
@@ -16,6 +16,7 @@ if ($hassiteconfig) { // speedup for non-admins, add all caps used on this page
     $rqsetting->plugin = 'qtype_random';
     $temp->add($rqsetting);
     $temp->add(new admin_setting_configcheckbox('experimentalsplitrestore', get_string('experimentalsplitrestore', 'admin'), get_string('configexperimentalsplitrestore', 'admin'), 0));
+    $temp->add(new admin_setting_configcheckbox('enableimsccimport', get_string('enable_cc_import', 'imscc'), get_string('enable_cc_import_description', 'imscc'), 0));
     $temp->add(new admin_setting_configcheckbox('enablesafebrowserintegration', get_string('enablesafebrowserintegration', 'admin'), get_string('configenablesafebrowserintegration', 'admin'), 0));
 
     $ADMIN->add('misc', $temp);

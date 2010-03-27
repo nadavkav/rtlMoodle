@@ -1,12 +1,12 @@
-<?php // $Id: addcluster.php,v 1.5 2006/09/30 19:49:41 mark-nielsen Exp $
+<?php // $Id: addcluster.php,v 1.5.8.1 2009/11/02 17:01:06 tjhunt Exp $
 /**
  * Action for adding a cluster page
  *
- * @version $Id: addcluster.php,v 1.5 2006/09/30 19:49:41 mark-nielsen Exp $
+ * @version $Id: addcluster.php,v 1.5.8.1 2009/11/02 17:01:06 tjhunt Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/
-    confirm_sesskey();
+    require_sesskey();
 
     // first get the preceeding page
     // if $pageid = 0, then we are inserting a new page at the beginning of the lesson

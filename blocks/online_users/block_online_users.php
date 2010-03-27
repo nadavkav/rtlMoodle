@@ -1,4 +1,4 @@
-<?php //$Id: block_online_users.php,v 1.54.2.6 2009/01/09 00:54:05 jerome Exp $
+<?php //$Id: block_online_users.php,v 1.54.2.7 2009/11/20 03:08:59 andyjdavis Exp $
 
 /**
  * This block needs to be reworked.
@@ -116,7 +116,7 @@ class block_online_users extends block_base {
         if (count($users) < 50) {
             $usercount = "";
         } else {
-            $usercount = count_records_sql("SELECT COUNT(u.id), u.id $from $where GROUP BY u.id");
+            $usercount = count_records_sql("SELECT COUNT(DISTINCT(u.id)) $from $where");
             $usercount = ": $usercount";
         }
 

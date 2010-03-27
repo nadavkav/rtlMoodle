@@ -1,4 +1,4 @@
-<?PHP // $Id: grades.php,v 1.111.2.67 2009/05/08 20:08:53 skodak Exp $
+<?PHP // $Id: grades.php,v 1.111.2.68 2009/10/27 11:26:52 nicolasconnault Exp $
       // grades.php - created with Moodle 1.7 beta + (2006101003)
 
 
@@ -256,6 +256,7 @@ $string['gradessettings'] = 'Grade settings';
 $string['gradepreferences'] = 'Grade preferences';
 $string['gradepreferenceshelp'] = 'Grade preferences Help';
 $string['grades'] = 'Grades';
+$string['gradesforuser'] = 'Grades for $a->user';
 $string['gradesonly'] = 'Grades only';
 $string['gradetype'] = 'Grade type';
 $string['gradetypehelp'] = 'Specifies the type of grade used: none (no grading possible), value (enables the maximum and minimum grade settings), scale (enables the scale setting) or text (feedback only). Only value and scale grade types may be aggregated. The grade type for an activity-based grade item is set on the update activity page.';

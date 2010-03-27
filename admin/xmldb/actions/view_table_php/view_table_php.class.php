@@ -1,4 +1,4 @@
-<?php // $Id: view_table_php.class.php,v 1.14.2.1 2007/11/01 23:21:42 stronk7 Exp $
+<?php // $Id: view_table_php.class.php,v 1.14.2.2 2009/11/20 14:26:27 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -36,6 +36,7 @@ class view_table_php extends XMLDBAction {
         parent::init();
 
     /// Set own custom attributes
+        $this->sesskey_protected = false; // This action doesn't need sesskey protection
 
     /// Get needed strings
         $this->loadStrings(array(

@@ -1,4 +1,4 @@
-<?php  // $Id: enrol.php,v 1.21.2.5 2009/07/06 18:51:31 iarenaza Exp $
+<?php  // $Id: enrol.php,v 1.21.2.6 2009/11/04 21:00:25 iarenaza Exp $
 
 require_once("$CFG->dirroot/enrol/enrol.class.php");
 
@@ -214,6 +214,11 @@ function sync_enrolments($type, $enrol = false) {
                                           $this->enrol_localcoursefield,
                                           $idnumber );
                 if (!is_object($course_obj)) {
+                    if (empty($CFG->enrol_ldap_autocreate)) { // autocreation not allowed
+                        print "[ENROL_LDAP] Course $idnumber does not exist, skipping\n";
+                        continue; // next foreach course
+                    }
+
                     // ok, now then let's create it!
                     print "Creating Course $idnumber...";
                     $newcourseid = $this->create_course($course, true); // we are skipping fix_course_sortorder()

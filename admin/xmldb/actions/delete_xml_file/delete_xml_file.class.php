@@ -1,4 +1,4 @@
-<?php // $Id: delete_xml_file.class.php,v 1.5 2007/10/10 05:25:26 nicolasconnault Exp $
+<?php // $Id: delete_xml_file.class.php,v 1.5.2.1 2009/11/20 14:26:24 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -75,7 +75,7 @@ class delete_xml_file extends XMLDBAction {
             $o.= '    <p class="centerpara">' . $this->str['confirmdeletexmlfile'] . '<br /><br />' . $dirpath . '/install.php</p>';
             $o.= '    <table class="boxaligncenter" cellpadding="20"><tr><td>';
             $o.= '      <div class="singlebutton">';
-            $o.= '        <form action="index.php?action=delete_xml_file&amp;confirmed=yes&amp;dir=' . urlencode(str_replace($CFG->dirroot, '', $dirpath)) . '&amp;postaction=main_view#lastused" method="post"><fieldset class="invisiblefieldset">';
+            $o.= '        <form action="index.php?action=delete_xml_file&amp;sesskey=' . sesskey() . '&amp;confirmed=yes&amp;dir=' . urlencode(str_replace($CFG->dirroot, '', $dirpath)) . '&amp;postaction=main_view#lastused" method="post"><fieldset class="invisiblefieldset">';
             $o.= '          <input type="submit" value="'. $this->str['yes'] .'" /></fieldset></form></div>';
             $o.= '      </td><td>';
             $o.= '      <div class="singlebutton">';

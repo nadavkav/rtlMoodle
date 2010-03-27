@@ -1,4 +1,4 @@
-<?php // $Id: test.class.php,v 1.39.2.1 2008/05/18 23:34:50 stronk7 Exp $
+<?php // $Id: test.class.php,v 1.39.2.2 2009/11/20 14:26:25 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -1013,6 +1013,20 @@ class test extends XMLDBAction {
         $o .= '</ol>';
 
         $this->output = $o;
+
+    /// Finally drop all the potentially existing test tables
+        $table = new XMLDBTable('testtable');
+        if (table_exists($table)) {
+            $status = drop_table($table, true, false);
+        }
+        $table = new XMLDBTable ('anothertest');
+        if (table_exists($table)) {
+            $status = drop_table($table, true, false);
+        }
+        $table = new XMLDBTable ('newnameforthetable');
+        if (table_exists($table)) {
+            $status = drop_table($table, true, false);
+        }
 
     /// Launch postaction if exists (leave this here!)
         if ($this->getPostAction() && $result) {

@@ -1,4 +1,4 @@
-<?php // $Id: edit_index.class.php,v 1.8.2.1 2008/12/26 23:19:47 arborrow Exp $
+<?php // $Id: edit_index.class.php,v 1.8.2.2 2009/11/20 14:26:24 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -35,6 +35,7 @@ class edit_index extends XMLDBAction {
         parent::init();
 
     /// Set own custom attributes
+        $this->sesskey_protected = false; // This action doesn't need sesskey protection
 
     /// Get needed strings
         $this->loadStrings(array(
@@ -103,6 +104,7 @@ class edit_index extends XMLDBAction {
         $o.= '    <input type="hidden" name ="dir" value="' . str_replace($CFG->dirroot, '', $dirpath) . '" />';
         $o.= '    <input type="hidden" name ="table" value="' . $tableparam .'" />';
         $o.= '    <input type="hidden" name ="index" value="' . $indexparam .'" />';
+        $o.= '    <input type="hidden" name ="sesskey" value="' . sesskey() .'" />';
         $o.= '    <input type="hidden" name ="action" value="edit_index_save" />';
         $o.= '    <input type="hidden" name ="postaction" value="edit_table" />';
         $o.= '    <table id="formelements" class="boxaligncenter">';

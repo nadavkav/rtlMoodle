@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.129.2.6 2009/06/03 14:22:19 iarenaza Exp $
+<?php // $Id: index.php,v 1.129.2.9 2009/11/19 10:32:12 skodak Exp $
 
 
     require_once("../config.php");
@@ -128,6 +128,20 @@ httpsrequired();
                 $user = authenticate_user_login($frm->username, $frm->password);
             }
         }
+
+        // Intercept 'restored' users to provide them with info & reset password
+        if (!$user and $frm and is_restored_user($frm->username)) {
+            print_header("$site->fullname: $loginsite", $site->fullname, $navigation, '',
+                             '', true, '<div class="langmenu">'.$langmenu.'</div>');
+            print_heading(get_string('restoredaccount'));
+            print_simple_box(get_string('restoredaccountinfo'), 'center', '70%');
+            require_once('restored_password_form.php'); // Use our "supplanter" login_forgot_password_form. MDL-20846
+            $form = new login_forgot_password_form('forgot_password.php', array('username' => $frm->username));
+            $form->display();
+            print_footer();
+            die;
+        }
+
         update_login_count();
 
         if ($user) {

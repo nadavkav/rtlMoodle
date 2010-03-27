@@ -1,4 +1,4 @@
-<?php // $Id: attempt.php,v 1.18.2.3 2008/04/02 06:10:03 dongsheng Exp $
+<?php // $Id: attempt.php,v 1.18.2.4 2009/11/09 01:27:21 gbateson Exp $
     require_once("../../config.php");
     require_once("lib.php");
 
@@ -21,8 +21,10 @@
         error("Course Module ID is incorrect");
     }
 
-    // make sure this user is enrolled in this course
+    // make sure this user is enrolled in this course and can access this HotPot
     require_login($course);
+    $context = get_context_instance(CONTEXT_MODULE, $cm->id);
+    require_capability('mod/hotpot:attempt', $context);
 
     $next_url = "$CFG->wwwroot/course/view.php?id=$course->id";
     $time = time();

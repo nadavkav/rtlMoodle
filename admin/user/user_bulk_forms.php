@@ -1,4 +1,4 @@
-<?php //$Id: user_bulk_forms.php,v 1.1.2.3 2007/12/20 10:54:07 skodak Exp $
+<?php //$Id: user_bulk_forms.php,v 1.1.2.4 2009/11/16 17:11:31 arborrow Exp $
 
 require_once($CFG->libdir.'/formslib.php');
 require_once($CFG->libdir.'/datalib.php');
@@ -23,6 +23,9 @@ class user_bulk_action_form extends moodleform {
         $actions[4] = get_string('displayonpage');
         if (has_capability('moodle/user:update', $syscontext)) {
             $actions[5] = get_string('download', 'admin');
+        }
+        if (has_capability('moodle/user:update', $syscontext)) {
+            $actions[6] = get_string('forcepasswordchange');
         }
 
         $objs = array();

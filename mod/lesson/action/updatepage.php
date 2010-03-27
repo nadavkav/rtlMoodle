@@ -1,12 +1,12 @@
-<?php // $Id: updatepage.php,v 1.17.8.1 2008/10/07 05:13:51 scyrma Exp $
+<?php // $Id: updatepage.php,v 1.17.8.2 2009/11/02 17:01:07 tjhunt Exp $
 /**
  * Action for processing the form in editpage action and saves the page
  *
- * @version $Id: updatepage.php,v 1.17.8.1 2008/10/07 05:13:51 scyrma Exp $
+ * @version $Id: updatepage.php,v 1.17.8.2 2009/11/02 17:01:07 tjhunt Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/
-    confirm_sesskey();
+    require_sesskey();
     
     $redirect = optional_param('redirect', '', PARAM_ALPHA);
 

@@ -1,4 +1,4 @@
-<?php // $Id: check_bigints.class.php,v 1.3.2.1 2009/05/30 23:55:45 stronk7 Exp $
+<?php // $Id: check_bigints.class.php,v 1.3.2.2 2009/11/20 14:26:23 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -111,7 +111,7 @@ class check_bigints extends XMLDBAction {
             }
             $o.= '    <table class="boxaligncenter" cellpadding="20"><tr><td>';
             $o.= '      <div class="singlebutton">';
-            $o.= '        <form action="index.php?action=check_bigints&amp;confirmed=yes" method="post"><fieldset class="invisiblefieldset">';
+            $o.= '        <form action="index.php?action=check_bigints&amp;sesskey=' . sesskey() . '&amp;confirmed=yes" method="post"><fieldset class="invisiblefieldset">';
             $o.= '          <input type="submit" value="'. $this->str['yes'] .'" /></fieldset></form></div>';
             $o.= '      </td><td>';
             $o.= '      <div class="singlebutton">';

@@ -1,4 +1,4 @@
-<?php // $Id: view_structure_php.class.php,v 1.10.2.1 2007/11/01 23:21:41 stronk7 Exp $
+<?php // $Id: view_structure_php.class.php,v 1.10.2.2 2009/11/20 14:26:26 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -36,6 +36,7 @@ class view_structure_php extends XMLDBAction {
         parent::init();
 
     /// Set own custom attributes
+        $this->sesskey_protected = false; // This action doesn't need sesskey protection
 
     /// Get needed strings
         $this->loadStrings(array(

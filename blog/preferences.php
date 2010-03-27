@@ -1,4 +1,4 @@
-<?php  // $Id: preferences.php,v 1.18.2.1 2008/04/30 04:45:22 dongsheng Exp $
+<?php  // $Id: preferences.php,v 1.18.2.2 2009/11/19 16:39:52 skodak Exp $
        // preferences.php - user prefs for blog modeled on calendar
 
     require_once('../config.php');
@@ -22,7 +22,7 @@
 
 /// If data submitted, then process and store.
 
-    if (data_submitted()) {
+    if (data_submitted() and confirm_sesskey()) {
         $pagesize = required_param('pagesize', PARAM_INT);
 
         if ($pagesize < 1) {

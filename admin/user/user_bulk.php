@@ -1,4 +1,4 @@
-<?php  //$Id: user_bulk.php,v 1.4.2.4 2008/02/05 15:22:08 poltawski Exp $
+<?php  //$Id: user_bulk.php,v 1.4.2.5 2009/11/16 17:11:31 arborrow Exp $
 
 require_once('../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
@@ -24,6 +24,7 @@ if ($data = $action_form->get_data(false)) {
         case 3: redirect($CFG->wwwroot.'/'.$CFG->admin.'/user/user_bulk_delete.php');
         case 4: redirect($CFG->wwwroot.'/'.$CFG->admin.'/user/user_bulk_display.php');
         case 5: redirect($CFG->wwwroot.'/'.$CFG->admin.'/user/user_bulk_download.php');
+        case 6: redirect($CFG->wwwroot.'/'.$CFG->admin.'/user/user_bulk_forcepasswordchange.php');
     }
 }
 

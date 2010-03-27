@@ -1,4 +1,4 @@
-<?php  // $Id: upload.php,v 1.32.2.1 2007/10/12 16:09:46 tjhunt Exp $
+<?php  // $Id: upload.php,v 1.32.2.2 2009/11/21 23:10:44 skodak Exp $
 
     require("../../config.php");
     require("lib.php");
@@ -7,7 +7,7 @@
     $id = required_param('id', PARAM_INT);          // CM ID
 
 
-    if (! $cm = get_record("course_modules", "id", $id)) {
+    if (! $cm = get_coursemodule_from_id('workshop', $id)) {
         error("Course Module ID was incorrect");
     }
     if (! $course = get_record("course", "id", $cm->course)) {

@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.2.2.3 2008/11/26 20:58:04 skodak Exp $
+<?php // $Id: index.php,v 1.2.2.4 2009/11/13 06:16:21 andyjdavis Exp $
       // index.php - scheduled backup logs
 
     require_once('../../../config.php');
@@ -38,7 +38,7 @@
     $strcourse = get_string("course");
     $strtimetaken = get_string("timetaken","quiz");
     $strstatus = get_string("status");
-    $strnext = get_string("next");
+    $strnext = get_string("backupnext");
 
 /// Decide when to show last execution logs or detailed logs
 /// Lastlog view

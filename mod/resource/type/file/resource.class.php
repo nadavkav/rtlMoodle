@@ -1,4 +1,4 @@
-<?php // $Id: resource.class.php,v 1.71.2.29 2009/10/03 02:20:40 nicolasconnault Exp $
+<?php // $Id: resource.class.php,v 1.71.2.31 2009/11/25 06:36:19 dongsheng Exp $
 
 /**
 * Extend the base resource class for file resources
@@ -267,11 +267,11 @@ class resource_file extends resource_base {
                 $resourcetype = "pdf";
                 //no need embedded, html file types behave like unknown file type
                 
-            } else if ($mimetype == "audio/x-pn-realaudio") {   // It's a realmedia file
+            } else if ($mimetype == "audio/x-pn-realaudio-plugin") {   // It's a realmedia file
                 $resourcetype = "rm";
                     $embedded = true;
-                }
-            } 
+            }
+        } 
 
         $isteamspeak = (stripos($resource->reference, 'teamspeak://') === 0);
 
@@ -818,6 +818,7 @@ class resource_file extends resource_base {
         $woptions = array(0 => get_string('pagewindow', 'resource'), 1 => get_string('newwindow', 'resource'));
         $mform->addElement('select', 'windowpopup', get_string('display', 'resource'), $woptions);
         $mform->disabledIf('windowpopup', 'forcedownload', 'checked');
+        $mform->setDefault('windowpopup', !empty($CFG->resource_popup));
 
         $navoptions = array(0 => get_string('keepnavigationvisibleno','resource'), 1 => get_string('keepnavigationvisibleyesframe','resource'), 2 => get_string('keepnavigationvisibleyesobject','resource'));
         $mform->addElement('select', 'framepage', get_string('keepnavigationvisible', 'resource'), $navoptions);

@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.286.2.31 2009/02/13 15:46:35 stronk7 Exp $
+<?php // $Id: index.php,v 1.286.2.34 2009/11/24 04:04:20 moodler Exp $
 
 /// Check that config.php exists, if not then call the install script
     if (!file_exists('../config.php')) {
@@ -633,6 +633,11 @@
     } else if ($insecuredataroot == INSECURE_DATAROOT_ERROR) {
         print_box(get_string('datarootsecurityerror', 'admin', $CFG->dataroot), 'generalbox adminerror');
         
+    }
+
+    if (empty($CFG->passwordsaltmain)) {
+        $path = $CFG->docroot.'/'.str_replace('_utf8', '', current_language()).'/report/security/report_security_check_passwordsaltmain';
+        print_box(get_string('upgrade197notice', 'admin')."\n".get_string('upgrade197salt', 'admin', $path));
     }
 
     if (defined('WARN_DISPLAY_ERRORS_ENABLED')) {

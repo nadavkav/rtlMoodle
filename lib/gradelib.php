@@ -1,4 +1,4 @@
-<?php // $Id: gradelib.php,v 1.120.2.31 2009/04/30 19:04:51 skodak Exp $
+<?php // $Id: gradelib.php,v 1.120.2.32 2009/11/13 22:09:03 mudrd8mz Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 // NOTICE OF COPYRIGHT                                                   //
@@ -26,7 +26,7 @@
  * Library of functions for gradebook - both public and internal
  *
  * @author Moodle HQ developers
- * @version  $Id: gradelib.php,v 1.120.2.31 2009/04/30 19:04:51 skodak Exp $
+ * @version  $Id: gradelib.php,v 1.120.2.32 2009/11/13 22:09:03 mudrd8mz Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package moodlecore
  */
@@ -1136,7 +1136,7 @@ function grade_update_mod_grades($modinstance, $userid=0) {
                         // good old numeric value
                         $grade->rawgrade = $usergrade;
                     }
-                    $grades[] = $grade;
+                    $grades[$uid] = $grade;
                 }
 
                 grade_update('legacygrab', $grade_item->courseid, $grade_item->itemtype, $grade_item->itemmodule,

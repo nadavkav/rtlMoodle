@@ -1,4 +1,4 @@
-<?php // $Id: discussion.php,v 1.15.2.5 2008/07/05 14:53:32 skodak Exp $
+<?php // $Id: discussion.php,v 1.15.2.6 2009/11/20 03:52:07 andyjdavis Exp $
 
     require('../config.php');
     require('lib.php');
@@ -41,6 +41,7 @@
      <head>
        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
        <title><?php echo get_string('discussion', 'message').': '.fullname($user) ?></title>
+       <link rel="shortcut icon" href="<?php echo $CFG->wwwroot.'/theme/'.current_theme() ?>/favicon.ico" />
      </head>
      <frameset rows="110,*,0,220">
        <noframes><body><?php

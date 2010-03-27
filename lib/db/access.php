@@ -1,4 +1,4 @@
-<?php  // $Id: access.php,v 1.75.2.20 2009/10/06 01:13:20 stronk7 Exp $
+<?php  // $Id: access.php,v 1.75.2.22 2009/11/19 23:55:25 stronk7 Exp $
 //
 // Capability definitions for Moodle core.
 //
@@ -168,6 +168,17 @@ $moodle_capabilities = array(
         )
     ),
 
+    'moodle/backup:userinfo' => array(
+
+        'riskbitmask' => RISK_PERSONAL,
+
+        'captype' => 'read',
+        'contextlevel' => CONTEXT_COURSE,
+        'legacy' => array(
+            'admin' => CAP_ALLOW
+        )
+    ),
+
     'moodle/site:restore' => array(
 
         'riskbitmask' => RISK_SPAM | RISK_PERSONAL | RISK_XSS,
@@ -176,6 +187,17 @@ $moodle_capabilities = array(
         'contextlevel' => CONTEXT_COURSE,
         'legacy' => array(
             'editingteacher' => CAP_ALLOW,
+            'admin' => CAP_ALLOW
+        )
+    ),
+
+    'moodle/restore:userinfo' => array(
+
+        'riskbitmask' => RISK_SPAM | RISK_PERSONAL | RISK_XSS | RISK_CONFIG,
+
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'legacy' => array(
             'admin' => CAP_ALLOW
         )
     ),

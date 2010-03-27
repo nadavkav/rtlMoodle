@@ -1,4 +1,4 @@
-<?php  // $Id: report.php,v 1.60.2.6 2009/02/09 09:26:47 danmarsden Exp $
+<?php  // $Id: report.php,v 1.60.2.7 2009/11/22 11:09:31 skodak Exp $
 
     require_once("../../config.php");
     require_once("lib.php");
@@ -32,8 +32,8 @@
     $strresponses = get_string("responses", "choice");
 
     add_to_log($course->id, "choice", "report", "report.php?id=$cm->id", "$choice->id",$cm->id);
-      
-    if ($action == 'delete' && has_capability('mod/choice:deleteresponses',$context)) {
+
+    if (data_submitted() && $action == 'delete' && has_capability('mod/choice:deleteresponses',$context) && confirm_sesskey()) {
         choice_delete_responses($attemptids, $choice->id); //delete responses.
         redirect("report.php?id=$cm->id");
     }

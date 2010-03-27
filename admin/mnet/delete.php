@@ -1,4 +1,4 @@
-<?PHP // $Id: delete.php,v 1.4 2007/01/30 10:23:01 skodak Exp $
+<?PHP // $Id: delete.php,v 1.4.6.1 2009/11/21 21:57:03 skodak Exp $
 
     require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
     include_once($CFG->dirroot.'/mnet/lib.php');
@@ -30,6 +30,8 @@
     if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         redirect('index.php', get_string('postrequired','mnet') ,7);
     }
+
+    require_sesskey();
 
     if ('verify' == $step) {
         $mnet_peer = new mnet_peer();

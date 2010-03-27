@@ -1,6 +1,6 @@
-<?php  // $Id: questiontype.php,v 1.14.4.13 2009/02/19 01:09:35 tjhunt Exp $
+<?php  // $Id: questiontype.php,v 1.14.4.15 2009/11/19 10:04:27 skodak Exp $
 /**
- * @version $Id: questiontype.php,v 1.14.4.13 2009/02/19 01:09:35 tjhunt Exp $
+ * @version $Id: questiontype.php,v 1.14.4.15 2009/11/19 10:04:27 skodak Exp $
  * @author Martin Dougiamas and many others. Tim Hunt.
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package questionbank

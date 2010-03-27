@@ -1,4 +1,4 @@
-<?php  // $Id: questiontype.php,v 1.12.2.9 2009/02/17 06:14:48 tjhunt Exp $
+<?php  // $Id: questiontype.php,v 1.12.2.11 2009/11/19 09:50:27 skodak Exp $
 /**
  * Class for the random question type.
  *

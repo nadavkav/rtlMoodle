@@ -1,4 +1,4 @@
-<?php  // $Id: subscribers.php,v 1.40.2.3 2008/12/11 07:02:10 tjhunt Exp $
+<?php  // $Id: subscribers.php,v 1.40.2.4 2009/11/21 15:27:10 skodak Exp $
 
     require_once("../../config.php");
     require_once("lib.php");
@@ -94,7 +94,7 @@
     $strforums      = get_string("forums", "forum");
 
     $searchtext = optional_param('searchtext', '', PARAM_RAW);
-    if ($frm = data_submitted()) {
+    if ($frm = data_submitted() and confirm_sesskey()) {
 
 /// A form was submitted so process the input
         if (!empty($frm->add) and !empty($frm->addselect)) {

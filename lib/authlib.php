@@ -1,4 +1,4 @@
-<?php  // $Id: authlib.php,v 1.8.2.7 2009/05/13 05:35:37 jerome Exp $
+<?php  // $Id: authlib.php,v 1.8.2.8 2009/11/23 21:53:48 skodak Exp $
 /**
  * @author Martin Dougiamas
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
@@ -128,6 +128,15 @@ class auth_plugin_base {
     function is_internal() {
         //override if needed
         return true;
+    }
+
+    /**
+     * Indicates if password hashes should be stored in local moodle database.
+     * @return bool true means md5 password hash stored in user table, false means flag 'not_cached' stored there instead
+     */
+    function prevent_local_passwords() {
+        // NOTE: this will be changed to true in 2.0
+        return false;
     }
 
     /**

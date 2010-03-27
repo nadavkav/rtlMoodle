@@ -1,4 +1,4 @@
-<?php // $Id: load_xml_file.class.php,v 1.7 2007/10/10 05:25:26 nicolasconnault Exp $
+<?php // $Id: load_xml_file.class.php,v 1.7.2.1 2009/11/20 14:26:25 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -38,6 +38,7 @@ class load_xml_file extends XMLDBAction {
         //$this->can_subaction = ACTION_HAVE_SUBACTIONS;
 
     /// Set own custom attributes
+        $this->sesskey_protected = false; // This action doesn't need sesskey protection
 
     /// Get needed strings
         $this->loadStrings(array(

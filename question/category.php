@@ -1,4 +1,4 @@
-<?php // $Id: category.php,v 1.24.2.4 2008/11/27 07:30:11 tjhunt Exp $
+<?php // $Id: category.php,v 1.24.2.5 2009/11/02 17:15:19 tjhunt Exp $
 /**
  * Allows a teacher to create, edit and delete categories
  *
@@ -39,7 +39,7 @@
 
     $streditingcategories = get_string('editcategories', 'quiz');
     if ($param->left || $param->right || $param->moveup || $param->movedown|| $param->moveupcontext || $param->movedowncontext){
-        confirm_sesskey();
+        require_sesskey();
         foreach ($qcobject->editlists as $list){
             //processing of these actions is handled in the method where appropriate and page redirects.
             $list->process_actions($param->left, $param->right, $param->moveup, $param->movedown,

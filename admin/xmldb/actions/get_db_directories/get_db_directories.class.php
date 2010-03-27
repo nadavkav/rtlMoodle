@@ -1,4 +1,4 @@
-<?php // $Id: get_db_directories.class.php,v 1.8.2.3 2008/01/03 15:03:00 skodak Exp $
+<?php // $Id: get_db_directories.class.php,v 1.8.2.4 2009/11/20 14:26:25 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -39,6 +39,7 @@ class get_db_directories extends XMLDBAction {
         //$this->can_subaction = ACTION_HAVE_SUBACTIONS;
 
     /// Set own custom attributes
+        $this->sesskey_protected = false; // This action doesn't need sesskey protection
 
     /// Get needed strings
         $this->loadStrings(array(

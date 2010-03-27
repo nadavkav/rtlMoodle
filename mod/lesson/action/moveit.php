@@ -1,12 +1,12 @@
-<?php // $Id: moveit.php,v 1.6 2006/09/30 19:49:41 mark-nielsen Exp $
+<?php // $Id: moveit.php,v 1.6.8.1 2009/11/02 17:01:07 tjhunt Exp $
 /**
  * Action for actually moving the page (database changes)
  *
- * @version $Id: moveit.php,v 1.6 2006/09/30 19:49:41 mark-nielsen Exp $
+ * @version $Id: moveit.php,v 1.6.8.1 2009/11/02 17:01:07 tjhunt Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/
-    confirm_sesskey();
+    require_sesskey();
 
     $pageid = required_param('pageid', PARAM_INT); //  page to move
     if (!$page = get_record("lesson_pages", "id", $pageid)) {

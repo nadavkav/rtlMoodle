@@ -1,12 +1,12 @@
-<?php // $Id: delete.php,v 1.7.8.1 2008/10/09 11:04:12 mudrd8mz Exp $
+<?php // $Id: delete.php,v 1.7.8.2 2009/11/02 17:01:07 tjhunt Exp $
 /**
  * Action for deleting a page
  *
- * @version $Id: delete.php,v 1.7.8.1 2008/10/09 11:04:12 mudrd8mz Exp $
+ * @version $Id: delete.php,v 1.7.8.2 2009/11/02 17:01:07 tjhunt Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/
-    confirm_sesskey();
+    require_sesskey();
 
     $pageid = required_param('pageid', PARAM_INT);
     if (!$thispage = get_record("lesson_pages", "id", $pageid)) {

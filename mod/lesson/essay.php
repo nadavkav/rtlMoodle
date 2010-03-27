@@ -1,8 +1,8 @@
-<?php  // $Id: essay.php,v 1.9 2007/08/27 23:05:42 mattc-catalyst Exp $
+<?php  // $Id: essay.php,v 1.9.2.1 2009/11/02 17:01:07 tjhunt Exp $
 /**
  * Provides the interface for grading essay questions
  *
- * @version $Id: essay.php,v 1.9 2007/08/27 23:05:42 mattc-catalyst Exp $
+ * @version $Id: essay.php,v 1.9.2.1 2009/11/02 17:01:07 tjhunt Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/
@@ -60,7 +60,7 @@
             }
             break;
         case 'grade':  // Grading form - get the necessary data
-            confirm_sesskey();
+            require_sesskey();
             
             $attemptid = required_param('attemptid', PARAM_INT);
 
@@ -136,7 +136,7 @@
             }
             break;
         case 'email': // Sending an email(s) to a single user or all
-            confirm_sesskey();
+            require_sesskey();
             
             // Get our users (could be singular)
             if ($userid = optional_param('userid', 0, PARAM_INT)) {

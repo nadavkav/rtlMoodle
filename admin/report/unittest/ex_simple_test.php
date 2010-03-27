@@ -6,7 +6,7 @@
  * @copyright &copy; 2006 The Open University
  * @author N.D.Freear@open.ac.uk, T.J.Hunt@open.ac.uk
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
- * @version $Id: ex_simple_test.php,v 1.1.2.2 2008/11/26 20:58:04 skodak Exp $
+ * @version $Id: ex_simple_test.php,v 1.1.2.3 2009/11/24 21:45:28 tjhunt Exp $
  * @package SimpleTestEx
  */
 
@@ -22,13 +22,13 @@ require_once($CFG->libdir . '/simpletestlib/test_case.php');
  * them into a group test.
  * @package SimpleTestEx
  */
-class AutoGroupTest extends GroupTest {
+class AutoGroupTest extends TestSuite {
 
     var $thorough;
     var $showsearch;
 
     function AutoGroupTest($showsearch, $thorough, $test_name = null) {
-        $this->GroupTest($test_name);
+        $this->TestSuite($test_name);
         $this->showsearch = $showsearch;
         $this->thorough = $thorough;
     }

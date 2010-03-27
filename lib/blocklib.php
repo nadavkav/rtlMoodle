@@ -1,4 +1,4 @@
-<?php //$Id: blocklib.php,v 1.129.2.7 2009/01/12 06:03:10 tjhunt Exp $
+<?php //$Id: blocklib.php,v 1.129.2.9 2009/11/19 09:54:02 skodak Exp $
 
 //This library includes all the necessary stuff to use blocks in course pages
 

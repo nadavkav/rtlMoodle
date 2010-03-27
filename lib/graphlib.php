@@ -1,4 +1,4 @@
-<?php  // $Id: graphlib.php,v 1.20.10.4 2009/10/06 17:49:49 tjhunt Exp $
+<?php  // $Id: graphlib.php,v 1.20.10.5 2009/11/19 16:56:49 tjhunt Exp $
 
 /*
 Graph Class. PHP Class to draw line, point, bar, and area graphs, including numeric x-axis and double y-axis.
@@ -509,7 +509,7 @@ function draw_x_label() {
   $label = $this->calculated['x_label'];
   $coords = array('x' => $x, 'y' => $y, 'reference' => 'top-center');
   $this->update_boundaryBox($label['boundary_box'], $coords);
- $this->print_TTF($label);
+  $this->print_TTF($label);
 }
 
 function draw_zero_axis_left() {
@@ -1368,7 +1368,7 @@ function get_boundaryBox($message) {
   } else {
     $width = abs($bounds[4]-$bounds[6]);
     $height = abs($bounds[7]-$bounds[1]);
-    $offsetY = 0;
+    $offsetY = $bounds[1];
     $offsetX = 0;
   }
 

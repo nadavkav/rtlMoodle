@@ -1,4 +1,4 @@
-<?php  // $Id: locallib.php,v 1.43.2.2 2008/07/10 09:48:47 scyrma Exp $
+<?php  // $Id: locallib.php,v 1.43.2.3 2009/10/30 08:15:17 mudrd8mz Exp $
 
 /// Library of extra functions and module workshop 
 
@@ -1651,6 +1651,8 @@ function workshop_list_teacher_submissions($workshop, $user) {
                     $assessment->userid = $user->id;
                     $assessment->grade = -1; // set impossible grade
                     $assessment->timecreated = $yearfromnow;
+                    $assessment->generalcomment = '';
+                    $assessment->teachercomment = '';
                     if (!$assessment->id = insert_record("workshop_assessments", $assessment)) {
                         error("Could not insert workshop assessment!");
                     }

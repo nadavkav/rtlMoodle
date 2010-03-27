@@ -1,4 +1,4 @@
-<?php // $Id: question.php,v 1.49.2.4 2009/06/05 08:30:36 tjhunt Exp $
+<?php // $Id: question.php,v 1.49.2.5 2009/11/19 17:59:55 tjhunt Exp $
 /**
  * Page for editing questions using the new form library.
  *
@@ -141,7 +141,9 @@ if ($mform->is_cancelled()){
     if ($inpopup) {
         close_window();
     } else {
-        redirect($returnurl);
+        $nexturl = new moodle_url($returnurl);
+        $nexturl->param('lastchanged', $question->id);
+        redirect($nexturl->out());
     }
 } elseif ($fromform = $mform->get_data()) {
     /// If we are saving as a copy, break the connection to the old question.

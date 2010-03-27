@@ -1,4 +1,4 @@
-<?php  // $Id: signup_form.php,v 1.35.2.6 2008/07/23 05:21:21 nicolasconnault Exp $
+<?php  // $Id: signup_form.php,v 1.35.2.8 2009/11/19 10:32:12 skodak Exp $
 
 require_once($CFG->libdir.'/formslib.php');
 require_once($CFG->dirroot.'/user/profile/lib.php');

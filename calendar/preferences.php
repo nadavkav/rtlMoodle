@@ -1,4 +1,4 @@
-<?PHP  // $Id: preferences.php,v 1.19.2.2 2008/01/24 14:10:45 nicolasconnault Exp $
+<?PHP  // $Id: preferences.php,v 1.19.2.3 2009/11/19 19:26:38 skodak Exp $
        // preferences.php - user prefs for calendar
 
     require_once('../config.php');
@@ -18,7 +18,7 @@
 
 /// If data submitted, then process and store.
 
-    if ($form = data_submitted()) {
+    if ($form = data_submitted() and confirm_sesskey()) {
         foreach ($form as $preference => $value) {
             switch ($preference) {
                 case 'timeformat':

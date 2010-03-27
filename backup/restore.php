@@ -1,4 +1,4 @@
-<?php //$Id: restore.php,v 1.44.2.7 2009/10/05 16:28:42 stronk7 Exp $
+<?php //$Id: restore.php,v 1.44.2.8 2009/11/19 18:48:52 skodak Exp $
     //This script is used to configure and execute the restore proccess.
 
     //Define some globals for all the script
@@ -154,6 +154,7 @@
         if (!empty($SESSION->restore->importing)) {
             // set up all the config stuff and skip asking the user about it.
             restore_setup_for_check($SESSION->restore,$backup_unique_code);
+            require_sesskey();
             include_once("restore_execute.html");
         } else {
             include_once("restore_form.html");
@@ -169,6 +170,7 @@
         }
         //Unset this for the future
         unset($SESSION->cancontinue);
+        require_sesskey();
         include_once("restore_execute.html");
     }
     print_simple_box_end();

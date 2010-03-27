@@ -1,4 +1,4 @@
-<?php // $Id: download.php,v 1.27.2.1 2009/03/18 14:08:32 sam_marshall Exp $
+<?php // $Id: download.php,v 1.27.2.2 2009/11/21 23:09:28 skodak Exp $
 
     require_once ("../../config.php");
 
@@ -8,7 +8,7 @@
     $type  = optional_param('type', 'xls', PARAM_ALPHA);
     $group = optional_param('group', 0, PARAM_INT);
 
-    if (! $cm = get_record("course_modules", "id", $id)) {
+    if (! $cm = get_coursemodule_from_id('survey', $id)) {
         error("Course Module ID was incorrect");
     }
 

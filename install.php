@@ -1,4 +1,4 @@
-<?php /// $Id: install.php,v 1.80.2.19 2009/03/26 01:36:17 dongsheng Exp $
+<?php /// $Id: install.php,v 1.80.2.20 2009/11/17 09:55:52 samhemelryk Exp $
       /// install.php - helps admin user to create a config.php file
 
 /// If config.php exists already then we are not needed.
@@ -552,6 +552,9 @@ if ($nextstage == SAVE) {
     $str .= "\r\n";
 
     $str .= '$CFG->directorypermissions = 00777;  // try 02777 on a server in Safe Mode'."\r\n";
+    $str .= "\r\n";
+
+    $str .= '$CFG->passwordsaltmain = \''.addsingleslashes(complex_random_string()).'\';'."\r\n";
     $str .= "\r\n";
 
     $str .= 'require_once("$CFG->dirroot/lib/setup.php");'."\r\n";

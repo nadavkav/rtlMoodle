@@ -1,4 +1,4 @@
-<?php  // $Id: enrol.php,v 1.28.2.5 2008/12/10 06:30:25 dongsheng Exp $
+<?php  // $Id: enrol.php,v 1.28.2.6 2009/10/30 22:09:23 poltawski Exp $
        // Implements all the main code for the PayPal plugin
 
 require_once("$CFG->dirroot/enrol/enrol.class.php");
@@ -17,7 +17,7 @@ function print_entry($course) {
 
     $teacher = get_teacher($course->id);
 
-    if ( (float) $course->cost < 0 ) {
+    if ( (float) $course->cost <= 0 ) {
         $cost = (float) $CFG->enrol_cost;
     } else {
         $cost = (float) $course->cost;

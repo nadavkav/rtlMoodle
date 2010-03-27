@@ -1,8 +1,8 @@
-<?php // $Id: reformat.php,v 1.5.4.1 2009/03/23 09:46:31 mudrd8mz Exp $
+<?php // $Id: reformat.php,v 1.5.4.3 2009/11/19 10:37:26 skodak Exp $
 /**
  * jjg7:8/9/2004
  *
- * @version $Id: reformat.php,v 1.5.4.1 2009/03/23 09:46:31 mudrd8mz Exp $
+ * @version $Id: reformat.php,v 1.5.4.3 2009/11/19 10:37:26 skodak Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/

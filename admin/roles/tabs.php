@@ -1,4 +1,4 @@
-<?php // $Id: tabs.php,v 1.27.2.7 2009/05/04 20:24:46 skodak Exp $
+<?php // $Id: tabs.php,v 1.27.2.8 2009/11/20 01:42:11 andyjdavis Exp $
 
 // Handles headers and tabs for the roles control at any level apart from SYSTEM level
 // We also assume that $currenttab, $assignableroles and $overridableroles are defined
@@ -34,6 +34,9 @@ if ($currenttab != 'update') {
                                 'type' => 'misc');
             $navlinks[] = array('name' => $category->name,
                                 'link' => "$CFG->wwwroot/course/category.php?id=$category->id",
+                                'type' => 'misc');
+            $navlinks[] = array('name' => get_string("roles"),
+                                'link' => null,
                                 'type' => 'misc');
             $navigation = build_navigation($navlinks);
 

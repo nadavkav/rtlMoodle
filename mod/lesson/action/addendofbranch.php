@@ -1,12 +1,12 @@
-<?php // $Id: addendofbranch.php,v 1.6 2006/09/30 19:49:41 mark-nielsen Exp $
+<?php // $Id: addendofbranch.php,v 1.6.8.1 2009/11/02 17:01:07 tjhunt Exp $
 /**
  * Action for adding an end of branch page
  *
- * @version $Id: addendofbranch.php,v 1.6 2006/09/30 19:49:41 mark-nielsen Exp $
+ * @version $Id: addendofbranch.php,v 1.6.8.1 2009/11/02 17:01:07 tjhunt Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package lesson
  **/
-    confirm_sesskey();
+    require_sesskey();
 
     // first get the preceeding page
     $pageid = required_param('pageid', PARAM_INT);

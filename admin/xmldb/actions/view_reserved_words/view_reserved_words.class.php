@@ -1,4 +1,4 @@
-<?php // $Id: view_reserved_words.class.php,v 1.5 2007/10/10 05:25:28 nicolasconnault Exp $
+<?php // $Id: view_reserved_words.class.php,v 1.5.2.1 2009/11/20 14:26:26 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -38,6 +38,7 @@ class view_reserved_words extends XMLDBAction {
         parent::init();
 
     /// Set own custom attributes
+    $this->sesskey_protected = false; // This action doesn't need sesskey protection
 
     /// Get needed strings
         $this->loadStrings(array(

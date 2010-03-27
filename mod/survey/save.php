@@ -1,4 +1,4 @@
-<?php // $Id: save.php,v 1.26.2.2 2008/05/25 14:25:06 skodak Exp $
+<?php // $Id: save.php,v 1.26.2.3 2009/11/20 08:33:47 skodak Exp $
 
     require_once('../../config.php');
     require_once('lib.php');
@@ -6,7 +6,7 @@
 
 // Make sure this is a legitimate posting
 
-    if (!$formdata = data_submitted("$CFG->wwwroot/mod/survey/view.php")) {
+    if (!$formdata = data_submitted("$CFG->wwwroot/mod/survey/view.php") or !confirm_sesskey()) {
         error("You are not supposed to use this script like that.");
     }
 

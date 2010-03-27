@@ -1,4 +1,4 @@
-<?php //$Id: block_html.php,v 1.8.22.7 2008/11/19 16:47:13 skodak Exp $
+<?php //$Id: block_html.php,v 1.8.22.8 2009/10/30 23:36:26 poltawski Exp $
 
 class block_html extends block_base {
 
@@ -90,6 +90,13 @@ class block_html extends block_base {
         }
 
         return true;
+    }
+
+    /*
+     * Hide the title bar when none set..
+     */
+    function hide_header(){
+        return empty($this->config->title);
     }
 }
 ?>

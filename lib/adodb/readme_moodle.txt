@@ -29,4 +29,4 @@ Our changes:
 
 skodak, iarenaza, moodler, stronk7
 
-$Id: readme_moodle.txt,v 1.14.2.5 2009/06/22 17:25:38 stronk7 Exp $
+$Id: readme_moodle.txt,v 1.14.2.7 2009/11/19 09:55:13 skodak Exp $

@@ -1,4 +1,4 @@
-<?php // $Id: delete_statement.class.php,v 1.5 2007/10/10 05:25:20 nicolasconnault Exp $
+<?php // $Id: delete_statement.class.php,v 1.5.2.1 2009/11/20 14:26:24 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -76,7 +76,7 @@ class delete_statement extends XMLDBAction {
             $o.= '    <p class="centerpara">' . $this->str['confirmdeletestatement'] . '<br /><br />' . $statementparam . '</p>';
             $o.= '    <table class="boxaligncenter" cellpadding="20"><tr><td>';
             $o.= '      <div class="singlebutton">';
-            $o.= '        <form action="index.php?action=delete_statement&amp;confirmed=yes&amp;postaction=edit_xml_file&amp;statement=' . $statementparam . '&amp;dir=' . urlencode(str_replace($CFG->dirroot, '', $dirpath)) . '" method="post"><fieldset class="invisiblefieldset">';
+            $o.= '        <form action="index.php?action=delete_statement&amp;sesskey=' . sesskey() . '&amp;confirmed=yes&amp;postaction=edit_xml_file&amp;statement=' . $statementparam . '&amp;dir=' . urlencode(str_replace($CFG->dirroot, '', $dirpath)) . '" method="post"><fieldset class="invisiblefieldset">';
             $o.= '          <input type="submit" value="'. $this->str['yes'] .'" /></fieldset></form></div>';
             $o.= '      </td><td>';
             $o.= '      <div class="singlebutton">';

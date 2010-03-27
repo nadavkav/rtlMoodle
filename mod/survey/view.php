@@ -1,4 +1,4 @@
-<?php // $Id: view.php,v 1.53.2.2 2007/10/17 14:35:34 tjhunt Exp $
+<?php // $Id: view.php,v 1.53.2.3 2009/11/20 08:33:47 skodak Exp $
 
     require_once("../../config.php");
     require_once("lib.php");
@@ -110,6 +110,7 @@
     echo "<form method=\"post\" action=\"save.php\" id=\"surveyform\">";
     echo '<div>';
     echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />";
+    echo "<input type=\"hidden\" name=\"sesskey\" value=\"".sesskey()."\" />";
 
     print_simple_box(format_text($survey->intro), 'center', '70%', '', 5, 'generalbox', 'intro');
 

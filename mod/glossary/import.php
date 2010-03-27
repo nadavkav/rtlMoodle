@@ -1,4 +1,4 @@
-<?php   // $Id: import.php,v 1.43.2.1 2007/10/12 16:09:44 tjhunt Exp $
+<?php   // $Id: import.php,v 1.43.2.2 2009/11/20 08:50:52 skodak Exp $
 
     require_once("../../config.php");
     require_once("lib.php");
@@ -61,6 +61,7 @@
         exit;
     }
 
+    require_sesskey();
     $form = data_submitted();
     $file = $_FILES["file"];
 
