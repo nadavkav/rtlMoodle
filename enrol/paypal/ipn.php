@@ -1,4 +1,4 @@
-<?php  // $Id: ipn.php,v 1.22 2007/10/09 12:49:57 skodak Exp $
+<?php  // $Id: ipn.php,v 1.22.2.1 2009/09/22 01:51:19 moodler Exp $
 
 /**
 * Listens for Instant Payment Notification from PayPal
@@ -95,6 +95,13 @@
             if ($data->payment_status != "Completed" and $data->payment_status != "Pending") {
                 role_unassign(0, $data->userid, 0, $context->id);
                 email_paypal_error_to_admin("Status not completed or pending. User unenrolled from course", $data);
+                die;
+            }
+
+            // If currency is incorrectly set then someone maybe trying to cheat the system 
+
+            if ($data->mc_currency != $course->currency) {
+                email_paypal_error_to_admin("Currency does not match course settings, received: ".addslashes($data->mc_currency), $data);
                 die;
             }
 

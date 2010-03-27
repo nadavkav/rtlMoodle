@@ -1,4 +1,4 @@
-<?php // $Id: downloads.php,v 1.16.4.2 2008/12/10 06:30:24 dongsheng Exp $
+<?php // $Id: downloads.php,v 1.16.4.3 2009/10/05 17:51:14 skodak Exp $
     require_once("../../config.php"); 
     require_once($CFG->libdir.'/filelib.php');
 
@@ -345,7 +345,7 @@ function ewiki_entry_downloads($row, $show_section=0, $fullinfo=false) {
    $info->comment = format_text($p_comment);
 
    if ($fullinfo) {
-        if ($user = get_record('user', 'id', $row['userid'])) {
+        if ($user = get_record('user', 'id', (int)$row['userid'])) {
             if (!isset($course->id)) {
                 $course->id = 1;
             }

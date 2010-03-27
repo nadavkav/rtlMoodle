@@ -1,4 +1,4 @@
-<?php  // $Id: lib.php,v 1.137.2.55 2009/04/21 14:13:15 stronk7 Exp $
+<?php  // $Id: lib.php,v 1.137.2.56 2009/09/28 16:07:19 skodak Exp $
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
 // NOTICE OF COPYRIGHT                                                   //
@@ -482,7 +482,7 @@ function data_append_new_field_to_templates($data, $newfieldname) {
  * this function creates an instance of the particular subfield class   *
  ************************************************************************/
 function data_get_field_from_name($name, $data){
-    $field = get_record('data_fields','name',$name);
+    $field = get_record('data_fields', 'name', $name, 'dataid', $data->id);
     if ($field) {
         return data_get_field($field, $data);
     } else {
@@ -495,7 +495,7 @@ function data_get_field_from_name($name, $data){
  * this function creates an instance of the particular subfield class   *
  ************************************************************************/
 function data_get_field_from_id($fieldid, $data) {
-    $field = get_record('data_fields','id',$fieldid);
+    $field = get_record('data_fields', 'id', $fieldid, 'dataid', $data->id);
     if ($field) {
         return data_get_field($field, $data);
     } else {

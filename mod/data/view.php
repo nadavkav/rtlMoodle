@@ -1,4 +1,4 @@
-<?php  // $Id: view.php,v 1.70.2.31 2009/06/04 09:53:20 stronk7 Exp $
+<?php  // $Id: view.php,v 1.70.2.32 2009/09/27 18:07:53 skodak Exp $
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
 // NOTICE OF COPYRIGHT                                                   //
@@ -300,6 +300,13 @@
     groups_print_activity_menu($cm, $returnurl);
     $currentgroup = groups_get_activity_group($cm);
     $groupmode = groups_get_activity_groupmode($cm);
+
+    // deletect entries not approved yet and show hint instead of not found error
+    if ($record and $data->approval and !$record->approved and $record->userid != $USER->id and !has_capability('mod/data:manageentries', $context)) {
+        if (!$currentgroup or $record->groupid == $currentgroup or $record->groupid == 0) {
+            print_error('notapproved', 'data');
+        }
+    }
 
     print_heading(format_string($data->name));
 

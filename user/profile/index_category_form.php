@@ -1,4 +1,4 @@
-<?php //$Id: index_category_form.php,v 1.3.4.1 2007/11/23 22:12:36 skodak Exp $
+<?php //$Id: index_category_form.php,v 1.3.4.3 2009/09/26 17:43:03 arborrow Exp $
 
 require_once($CFG->dirroot.'/lib/formslib.php');
 
@@ -14,7 +14,9 @@ class category_form extends moodleform {
 
         /// Add some extra hidden fields
         $mform->addElement('hidden', 'id');
+        $mform->setType('id', PARAM_INT);
         $mform->addElement('hidden', 'action', 'editcategory');
+        $mform->setType('action', PARAM_ACTION);
 
         $mform->addElement('text', 'name', get_string('profilecategoryname', 'admin'), 'maxlength="255" size="30"');
         $mform->setType('name', PARAM_MULTILANG);

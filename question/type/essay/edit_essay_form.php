@@ -1,4 +1,4 @@
-<?php  // $Id: edit_essay_form.php,v 1.7.2.2 2009/02/19 01:09:36 tjhunt Exp $
+<?php  // $Id: edit_essay_form.php,v 1.7.2.3 2009/09/26 16:27:18 skodak Exp $
 /**
  * Defines the editing form for the essay question type.
  *
@@ -24,10 +24,12 @@ class question_edit_essay_form extends question_edit_form {
         $mform->setType('feedback', PARAM_RAW);
 
         $mform->addElement('hidden', 'fraction', 0);
+        $mform->setType('fraction', PARAM_RAW);
 
         //don't need this default element.
         $mform->removeElement('penalty');
         $mform->addElement('hidden', 'penalty', 0);
+        $mform->setType('penalty', PARAM_RAW);
     }
 
     function set_data($question) {

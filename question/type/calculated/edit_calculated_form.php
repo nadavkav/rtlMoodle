@@ -1,4 +1,4 @@
-<?php  // $Id: edit_calculated_form.php,v 1.19.2.4 2009/02/19 01:09:33 tjhunt Exp $
+<?php  // $Id: edit_calculated_form.php,v 1.19.2.5 2009/09/26 16:27:18 skodak Exp $
 /**
  * Defines the editing form for the calculated question type.
  *
@@ -51,6 +51,7 @@ class question_edit_calculated_form extends question_edit_form {
         $this->qtypeobj =& $QTYPES[$this->qtype()];
         $label = get_string("sharedwildcards", "qtype_datasetdependent");
         $mform->addElement('hidden', 'initialcategory', 1);
+        $mform->setType('initialcategory', PARAM_INT);
         $html2 = $this->qtypeobj->print_dataset_definitions_category($this->question);
         $mform->insertElementBefore($mform->createElement('static','listcategory',$label,$html2),'name');
         $addfieldsname='updatecategory';

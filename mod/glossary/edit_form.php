@@ -1,4 +1,4 @@
-<?php // $Id: edit_form.php,v 1.7.2.1 2007/11/23 22:12:38 skodak Exp $
+<?php // $Id: edit_form.php,v 1.7.2.2 2009/09/26 16:25:48 skodak Exp $
 require_once ($CFG->dirroot.'/lib/formslib.php');
 
 class mod_glossary_entry_form extends moodleform {
@@ -64,8 +64,11 @@ class mod_glossary_entry_form extends moodleform {
         }
         if ( !$glossary->usedynalink ) {
             $mform->addElement('hidden', 'usedynalink', $usedynalink);
+            $mform->setType('usedynalink', PARAM_INT);
             $mform->addElement('hidden', 'casesensitive', $casesensitive);
+            $mform->setType('casesensitive', PARAM_INT);
             $mform->addElement('hidden', 'fullmatch', $fullmatch);
+            $mform->setType('fullmatch', PARAM_INT);
         } else {
 //-------------------------------------------------------------------------------
             $mform->addElement('header', 'linkinghdr', get_string('linking', 'glossary'));
@@ -86,9 +89,13 @@ class mod_glossary_entry_form extends moodleform {
         }
 
         $mform->addElement('hidden', 'e', $e);
+        $mform->setType('e', PARAM_INT);
         $mform->addElement('hidden', 'id', $cm->id);
+        $mform->setType('id', PARAM_INT);
         $mform->addElement('hidden', 'mode', $mode);
+        $mform->setType('mode', PARAM_ALPHA);
         $mform->addElement('hidden', 'hook', $hook);
+        $mform->setType('hook', PARAM_ALPHANUM);
 
 //-------------------------------------------------------------------------------
         $this->add_action_buttons();

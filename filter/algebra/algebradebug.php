@@ -1,4 +1,4 @@
-<?PHP // $Id: algebradebug.php,v 1.19.2.1 2007/12/19 17:38:47 skodak Exp $
+<?PHP // $Id: algebradebug.php,v 1.19.2.2 2009/07/17 08:40:06 skodak Exp $
       // This function fetches math. images from the data directory
       // If not, it obtains the corresponding TeX expression from the cache_tex db table
       // and uses mimeTeX to create the image file
@@ -18,6 +18,9 @@
 
     require_once($CFG->libdir.'/filelib.php');
     require_once($CFG->dirroot.'/filter/tex/lib.php');
+
+    require_login();
+    require_capability('moodle/site:config', get_context_instance(CONTEXT_SYSTEM));
 
     $query = urldecode($_SERVER['QUERY_STRING']);
     error_reporting(E_ALL);

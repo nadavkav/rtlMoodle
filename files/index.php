@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.121.2.10 2009/05/22 15:08:08 stronk7 Exp $
+<?php // $Id: index.php,v 1.121.2.11 2009/09/28 18:57:25 skodak Exp $
 
 //  Manage all uploaded files in a course file area
 
@@ -126,7 +126,7 @@
             echo '<div id="nav-bar">'.$fullnav.'</div>';
 
             if ($course->id == SITEID and $wdir != "/backupdata") {
-                print_heading(get_string("publicsitefileswarning2"), "center", 2);
+                print_heading(get_string("publicsitefileswarning3"), "center", 2);
             }
 
         } else {
@@ -140,7 +140,7 @@
                     admin_externalpage_setup('sitefiles');
                     admin_externalpage_print_header();
 
-                    print_heading(get_string("publicsitefileswarning2"), "center", 2);
+                    print_heading(get_string("publicsitefileswarning3"), "center", 2);
 
                 }
 
@@ -159,6 +159,13 @@
 
     if (! $basedir = make_upload_directory("$course->id")) {
         error("The site administrator needs to fix the file permissions");
+    }
+
+    // make sure site files contain the backupdata or else people put backups into public area!!
+    if ($course->id == SITEID) {
+        if (!file_exists("$CFG->dataroot/$course->id/backupdata")) {
+            make_upload_directory("$course->id/backupdata");
+        }
     }
 
     $baseweb = $CFG->wwwroot;

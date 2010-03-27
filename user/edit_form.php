@@ -1,4 +1,4 @@
-<?php //$Id: edit_form.php,v 1.24.2.11 2009/03/07 21:01:39 skodak Exp $
+<?php //$Id: edit_form.php,v 1.24.2.13 2009/09/27 19:13:22 skodak Exp $
 
 require_once($CFG->dirroot.'/lib/formslib.php');
 
@@ -16,7 +16,9 @@ class user_edit_form extends moodleform {
 
         /// Add some extra hidden fields
         $mform->addElement('hidden', 'id');
+        $mform->setType('id', PARAM_INT);
         $mform->addElement('hidden', 'course', $COURSE->id);
+        $mform->setType('course', PARAM_INT);
 
         /// Print the required moodle fields first
         $mform->addElement('header', 'moodle', $strgeneral);
@@ -116,18 +118,18 @@ class user_edit_form extends moodleform {
         // validate email
         if (!isset($usernew->email)) {
             // mail not confirmed yet
-        } else if (!validate_email($usernew->email)) {
+        } else if (!validate_email(stripslashes($usernew->email))) {
             $errors['email'] = get_string('invalidemail');
         } else if ((stripslashes($usernew->email) !== $user->email) and record_exists('user', 'email', $usernew->email, 'mnethostid', $CFG->mnet_localhost_id)) {
             $errors['email'] = get_string('emailexists');
         }
 
-        if (isset($usernew->email) and $usernew->email === $user->email and over_bounce_threshold($user)) {
+        if (isset($usernew->email) and stripslashes($usernew->email) === $user->email and over_bounce_threshold($user)) {
             $errors['email'] = get_string('toomanybounces');
         }
 
         if (isset($usernew->email) and !empty($CFG->verifychangedemail) and !isset($errors['email']) and !has_capability('moodle/user:update', get_context_instance(CONTEXT_SYSTEM))) {
-            $errorstr = email_is_not_allowed($usernew->email);
+            $errorstr = email_is_not_allowed(stripslashes($usernew->email));
             if ($errorstr !== false) {
                 $errors['email'] = $errorstr;
             }

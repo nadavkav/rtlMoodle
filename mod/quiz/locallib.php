@@ -1,4 +1,4 @@
-<?php  // $Id: locallib.php,v 1.127.2.15 2009/06/10 08:35:15 samhemelryk Exp $
+<?php  // $Id: locallib.php,v 1.127.2.16 2009/09/30 10:58:04 tjhunt Exp $
 /**
  * Library of functions used by the quiz module.
  *
@@ -922,4 +922,14 @@ function quiz_send_notification_emails($course, $quiz, $attempt, $context, $cm) 
     // return the number of successfully sent emails
     return $emailresult['good'];
 }
+
+/**
+ * Checks if browser is safe browser
+ * 
+ * @return true, if browser is safe browser else false
+ */
+function quiz_check_safe_browser() {
+    return strpos($_SERVER['HTTP_USER_AGENT'], "SEB") !== false;
+}
+
 ?>

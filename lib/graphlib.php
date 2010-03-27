@@ -1,4 +1,4 @@
-<?php  // $Id: graphlib.php,v 1.20.10.3 2008/06/11 08:22:35 jmg324 Exp $
+<?php  // $Id: graphlib.php,v 1.20.10.4 2009/10/06 17:49:49 tjhunt Exp $
 
 /*
 Graph Class. PHP Class to draw line, point, bar, and area graphs, including numeric x-axis and double y-axis.
@@ -1156,7 +1156,9 @@ function find_range($data, $min, $max, $resolution) {
     if ($max < 0) $factor = - pow(10, (floor(log10(abs($max))) + $resolution) );
     else $factor = pow(10, (floor(log10(abs($max))) - $resolution) );
   }
-  $factor = round($factor * 1000.0) / 1000.0; // To avoid some wierd rounding errors (Moodle)
+  if ($factor > 0.1) { // To avoid some wierd rounding errors (Moodle)
+    $factor = round($factor * 1000.0) / 1000.0; // To avoid some wierd rounding errors (Moodle)
+  } // To avoid some wierd rounding errors (Moodle)
 
   $max = $factor * @ceil($max / $factor);
   $min = $factor * @floor($min / $factor);

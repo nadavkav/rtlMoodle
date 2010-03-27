@@ -5,7 +5,7 @@
  *
  * Helps an admin to clean up spam in Moodle
  *
- * @version $Id: index.php,v 1.1.2.5 2009/02/17 23:01:43 skodak Exp $
+ * @version $Id: index.php,v 1.1.2.6 2009/09/22 17:11:02 tjhunt Exp $
  * @authors Dongsheng Cai, Martin Dougiamas, Amr Hourani
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  */
@@ -147,7 +147,7 @@ echo '</div>';
 
 function search_spammers($keywords) {
 
-    global $CFG, $USER, $DB; 
+    global $CFG, $USER; 
 
     if (!is_array($keywords)) {
         $keywords = array($keywords);    // Make it into an array

@@ -1,4 +1,4 @@
-<?php // $Id: security.php,v 1.21.2.8 2008/11/30 19:25:48 skodak Exp $
+<?php // $Id: security.php,v 1.21.2.10 2009/08/11 05:27:07 skodak Exp $
 
 if ($hassiteconfig) { // speedup for non-admins, add all caps used on this page
 
@@ -65,6 +65,7 @@ if ($hassiteconfig) { // speedup for non-admins, add all caps used on this page
     $temp->add(new admin_setting_configcheckbox('loginhttps', get_string('loginhttps', 'admin'), get_string('configloginhttps', 'admin'), 0));
     $temp->add(new admin_setting_configcheckbox('cookiesecure', get_string('cookiesecure', 'admin'), get_string('configcookiesecure', 'admin'), 0));
     $temp->add(new admin_setting_configcheckbox('cookiehttponly', get_string('cookiehttponly', 'admin'), get_string('configcookiehttponly', 'admin'), 0));
+    $temp->add(new admin_setting_configcheckbox('regenloginsession', get_string('regenloginsession', 'admin'), get_string('configregenloginsession', 'admin'), 0));
     $ADMIN->add('security', $temp);
 
 

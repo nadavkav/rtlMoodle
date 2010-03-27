@@ -1,4 +1,4 @@
-<?php // $Id: cron.php,v 1.126.2.17 2009/03/26 19:56:25 skodak Exp $
+<?php // $Id: cron.php,v 1.126.2.18 2009/08/17 23:53:47 jonathanharker Exp $
 
 /// This script looks through all the module directories for cron.php files
 /// and runs them.  These files can contain cleanup functions, email functions
@@ -350,7 +350,7 @@
                                                 p.id as prefid 
                                         FROM {$CFG->prefix}user u 
                                              JOIN {$CFG->prefix}user_preferences p ON u.id=p.userid
-                                        WHERE p.name='create_password' AND p.value=1 AND u.email !='' ");
+                                        WHERE p.name='create_password' AND p.value='1' AND u.email !='' ");
 
             foreach ($newusers as $newuserid => $newuser) {
                 $newuser->emailstop = 0; // send email regardless

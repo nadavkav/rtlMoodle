@@ -1,4 +1,4 @@
-<?php  // $Id: edit_form.php,v 1.2.2.6 2008/02/29 09:31:58 scyrma Exp $
+<?php  // $Id: edit_form.php,v 1.2.2.7 2009/09/26 16:27:49 skodak Exp $
 
 require_once($CFG->dirroot.'/lib/formslib.php');
 
@@ -11,6 +11,7 @@ class tag_edit_form extends moodleform {
         $mform->addElement('header', 'tag', get_string('description','tag'));
 
         $mform->addElement('hidden', 'id');
+        $mform->setType('id', PARAM_INT);
 
         $systemcontext   = get_context_instance(CONTEXT_SYSTEM);
 

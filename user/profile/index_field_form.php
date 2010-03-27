@@ -1,4 +1,4 @@
-<?php //$Id: index_field_form.php,v 1.4.4.2 2008/04/25 12:20:02 skodak Exp $
+<?php //$Id: index_field_form.php,v 1.4.4.3 2009/09/26 16:28:24 skodak Exp $
 
 require_once($CFG->dirroot.'/lib/formslib.php');
 
@@ -22,8 +22,11 @@ class field_form extends moodleform {
 
         /// Add some extra hidden fields
         $mform->addElement('hidden', 'id');
+        $mform->setType('id', PARAM_INT);
         $mform->addElement('hidden', 'action', 'editfield');
+        $mform->setType('action', PARAM_ACTION);
         $mform->addElement('hidden', 'datatype', $datatype);
+        $mform->setType('datatype', PARAM_ALPHA);
 
         $this->field->define_form($mform);
 

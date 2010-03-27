@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.15.2.4 2008/12/08 10:45:47 exe-cutor Exp $
+<?php // $Id: index.php,v 1.15.2.5 2009/10/09 11:07:22 exe-cutor Exp $
       // Designed to be redirected from moodle/login/index.php
 
     require('../../config.php');
@@ -14,6 +14,7 @@
         }
 
         redirect($urltogo);
+        
     }
 
     $pluginconfig   = get_config('auth/shibboleth');

@@ -1,4 +1,4 @@
-<?php  // $Id: config.html,v 1.32.2.4 2007/12/21 14:13:54 poltawski Exp $
+<?php  // $Id: config.html,v 1.32.2.5 2009/09/30 10:58:04 tjhunt Exp $
     require_once($CFG->dirroot . '/mod/quiz/locallib.php');
 
     if (!isset($form->timeopen)) {
@@ -291,11 +291,17 @@
 </tr>
 
 <tr valign="top">
-  <td align="right"><b><?php print_string("popup", "quiz") ?>:</b></td>
+  <td align="right"><b><?php print_string('browsersecurity', 'quiz') ?>:</b></td>
   <td>
     <?php
-       choose_from_menu ($yesnooptions, "popup", $form->popup, "", "", "");
-       helpbutton("popup", get_string("popup","quiz"), "quiz");
+        $browseroptions = array(
+                0 => get_string('none', 'quiz'),
+                1 => get_string('popupwithjavascriptsupport', 'quiz'));
+        if ($CFG->enablesafebrowserintegration) { 
+            $browseroptions[2] = get_string('requiresafeexambrowser', 'quiz');
+        }
+        choose_from_menu ($browseroptions, 'popup', $form->popup, '', '', '');
+        helpbutton('browsersecurity', get_string('browsersecurity', 'quiz'), 'quiz');
     ?>
   </td>
   <td align="center">

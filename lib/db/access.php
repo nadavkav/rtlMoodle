@@ -1,4 +1,4 @@
-<?php  // $Id: access.php,v 1.75.2.18 2009/01/07 19:55:25 skodak Exp $
+<?php  // $Id: access.php,v 1.75.2.20 2009/10/06 01:13:20 stronk7 Exp $
 //
 // Capability definitions for Moodle core.
 //
@@ -176,6 +176,16 @@ $moodle_capabilities = array(
         'contextlevel' => CONTEXT_COURSE,
         'legacy' => array(
             'editingteacher' => CAP_ALLOW,
+            'admin' => CAP_ALLOW
+        )
+    ),
+
+    'moodle/restore:rolldates' => array(
+
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'legacy' => array(
+            'coursecreator' => CAP_ALLOW,
             'admin' => CAP_ALLOW
         )
     ),
@@ -651,6 +661,30 @@ $moodle_capabilities = array(
 
     'moodle/course:changeidnumber' => array(
 
+        'riskbitmask' => RISK_XSS,
+
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'legacy' => array(
+            'editingteacher' => CAP_ALLOW,
+            'admin' => CAP_ALLOW
+        ),
+        'clonepermissionsfrom' => 'moodle/course:update'
+    ),
+
+    'moodle/course:changecategory' => array(
+        'riskbitmask' => RISK_XSS,
+
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'legacy' => array(
+            'editingteacher' => CAP_ALLOW,
+            'admin' => CAP_ALLOW
+        ),
+        'clonepermissionsfrom' => 'moodle/course:update'
+    ),
+
+    'moodle/course:changesummary' => array(
         'riskbitmask' => RISK_XSS,
 
         'captype' => 'write',

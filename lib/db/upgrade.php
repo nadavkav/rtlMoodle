@@ -1,4 +1,4 @@
-<?PHP  //$Id: upgrade.php,v 1.154.2.52 2009/05/11 18:29:27 stronk7 Exp $
+<?PHP  //$Id: upgrade.php,v 1.154.2.54 2009/09/26 19:47:08 skodak Exp $
 
 // This file keeps track of upgrades to Moodle.
 //
@@ -1780,7 +1780,7 @@ function xmldb_main_upgrade($oldversion=0) {
                 $raw_normalized = clean_param($oldtag->text, PARAM_TAG);
                 $normalized     = moodle_strtolower($raw_normalized);
                 // if this tag does not exist in tag table yet
-                if (!$newtag = get_record('tag', 'name', $normalized, '', '', '', '', 'id')) {
+                if (!$newtag = get_record('tag', 'name', addslashes($normalized), '', '', '', '', 'id')) {
                     $itag = new object();
                     $itag->name         = $normalized;
                     $itag->rawname      = $raw_normalized;
@@ -1793,7 +1793,7 @@ function xmldb_main_upgrade($oldversion=0) {
                         $itag->tagtype  = 'default';
                     }
 
-                    if ($idx = insert_record('tag', $itag)) {
+                    if ($idx = insert_record('tag', addslashes_recursive($itag))) {
                         $tagrefs[$oldtag->id] = $idx;
                     }
                 // if this tag is already used by tag table
@@ -3169,6 +3169,21 @@ function xmldb_main_upgrade($oldversion=0) {
         upgrade_main_savepoint($result, 2007101547);
     }
 
+    if ($result && $oldversion < 2007101551){
+        //insert new record for log_display table
+        //used to record tag update.
+        if (!record_exists("log_display", "action", "update",
+                    "module", "tag")){
+            $log_action = new stdClass();
+            $log_action->module = 'tag';
+            $log_action->action = 'update';
+            $log_action->mtable = 'tag';
+            $log_action->field  = 'name';
+
+            $result  = $result && insert_record('log_display', $log_action);
+        }
+        upgrade_main_savepoint($result, 2007101551);
+    }
     return $result;
 }
 

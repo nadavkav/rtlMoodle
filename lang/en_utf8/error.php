@@ -1,4 +1,4 @@
-<?PHP // $Id: error.php,v 1.26.2.24 2009/04/23 20:28:35 skodak Exp $
+<?PHP // $Id: error.php,v 1.26.2.25 2009/10/05 17:43:43 stronk7 Exp $
       // error.php - created with Moodle 1.7 beta + (2006101003)
 
 
@@ -101,6 +101,7 @@ $string['pluginrequirementsnotmet'] = 'Plugin \"$a->pluginname\" ($a->pluginvers
 $string['processingstops'] = 'Processing stops here. Remaining records ignored.';
 $string['remotedownloaderror'] = 'Download of component to your server failed, please verify proxy settings, PHP cURL extension is highly recommended.<br /><br />You must download the <a href=\"$a->url\">$a->url</a> file manually, copy it to \"$a->dest\" in your server and unzip it there.';
 $string['remotedownloadnotallowed'] = 'Download of components to your server isn\'t allowed (allow_url_fopen is disabled).<br /><br />You must download the <a href=\"$a->url\">$a->url</a> file manually, copy it to \"$a->dest\" in your server and unzip it there.';
+$string['restorechecksumfailed'] = 'Some problem happened with the restore information stored in your session. Please check your PHP memory/DB package size limits. Restore stopped.';
 $string['restricteduser'] = 'Sorry, but your current account \"$a\" is restricted from doing that';
 $string['scheduledbackupsdisabled'] = 'Scheduled backups have been disabled by the server admin';
 $string['sendmessage'] = 'Send Message';

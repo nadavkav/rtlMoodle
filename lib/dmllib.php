@@ -1,4 +1,4 @@
-<?php // $Id: dmllib.php,v 1.116.2.32 2009/02/15 23:04:43 stronk7 Exp $
+<?php // $Id: dmllib.php,v 1.116.2.33 2009/09/26 11:55:57 skodak Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -1627,9 +1627,11 @@ function update_record($table, $dataobject) {
 
     global $db, $CFG;
 
-    if (! isset($dataobject->id) ) {
+    // integer value in id propery required
+    if (empty($dataobject->id)) {
         return false;
     }
+    $dataobject->id = (int)$dataobject->id;
 
 /// Check we are handling a proper $dataobject
     if (is_array($dataobject)) {

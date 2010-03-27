@@ -1,4 +1,4 @@
-<?php //$Id: editadvanced_form.php,v 1.14.2.12 2009/05/13 05:35:37 jerome Exp $
+<?php //$Id: editadvanced_form.php,v 1.14.2.14 2009/09/27 19:13:22 skodak Exp $
 
 require_once($CFG->dirroot.'/lib/formslib.php');
 
@@ -16,7 +16,9 @@ class user_editadvanced_form extends moodleform {
 
         /// Add some extra hidden fields
         $mform->addElement('hidden', 'id');
+        $mform->setType('id', PARAM_INT);
         $mform->addElement('hidden', 'course', $COURSE->id);
+        $mform->setType('course', PARAM_INT);
 
         /// Print the required moodle fields first
         $mform->addElement('header', 'moodle', $strgeneral);
@@ -130,13 +132,14 @@ class user_editadvanced_form extends moodleform {
         if (empty($usernew->username)) {
             //might be only whitespace
             $err['username'] = get_string('required');
-        } else if (!$user or $user->username !== $usernew->username) {
+        } else if (!$user or $user->username !== stripslashes($usernew->username)) {
             //check new username does not exist
             if (record_exists('user', 'username', $usernew->username, 'mnethostid', $CFG->mnet_localhost_id)) {
                 $err['username'] = get_string('usernameexists');
             }
             //check allowed characters
             if ($usernew->username !== moodle_strtolower($usernew->username)) {
+                echo 'grrrr';
                 $err['username'] = get_string('usernamelowercase');
             } else {
                 if (empty($CFG->extendedusernamechars)) {
@@ -149,7 +152,7 @@ class user_editadvanced_form extends moodleform {
         }
 
         if (!$user or $user->email !== stripslashes($usernew->email)) {
-            if (!validate_email($usernew->email)) {
+            if (!validate_email(stripslashes($usernew->email))) {
                 $err['email'] = get_string('invalidemail');
             } else if (record_exists('user', 'email', $usernew->email, 'mnethostid', $CFG->mnet_localhost_id)) {
                 $err['email'] = get_string('emailexists');

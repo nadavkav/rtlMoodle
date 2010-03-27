@@ -1,4 +1,4 @@
-<?php  // $Id: mod.php,v 1.9.2.2 2008/12/03 16:31:01 samulik Exp $
+<?php  // $Id: mod.php,v 1.9.2.3 2009/10/08 02:05:26 nicolasconnault Exp $
 
     if (!defined('MOODLE_INTERNAL')) {
         die('Direct access to this script is forbidden.');    ///  It must be included from a Moodle page
@@ -29,7 +29,7 @@
     $taught_courses = array();
     if (!empty($tcourseids)) {
         $tcourseids = substr($tcourseids,0,-1);
-        $taught_courses = get_records_list('course', 'id', $tcourseids);
+        $taught_courses = get_records_list('course', 'id', $tcourseids, 'sortorder');
     }
 
     if (!empty($creator)) {

@@ -1,4 +1,4 @@
-<?PHP // $Id: view.php,v 1.168.2.27 2009/04/09 08:30:10 skodak Exp $
+<?PHP // $Id: view.php,v 1.168.2.28 2009/10/02 06:28:06 moodler Exp $
 
 //  Display profile for a particular user
 
@@ -332,7 +332,7 @@
 
 
     if (!isset($hiddenfields['mycourses'])) {
-        if ($mycourses = get_my_courses($user->id, null, null, false, 21)) {
+        if ($mycourses = get_my_courses($user->id, 'visible DESC,sortorder ASC', null, false, 21)) {
             $shown=0;
             $courselisting = '';
             foreach ($mycourses as $mycourse) {

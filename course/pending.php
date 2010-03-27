@@ -1,4 +1,4 @@
-<?php  // $Id: pending.php,v 1.11.2.5 2008/12/05 08:57:07 tjhunt Exp $
+<?php  // $Id: pending.php,v 1.11.2.6 2009/09/27 06:06:43 mudrd8mz Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -81,6 +81,16 @@
         if (!empty($CFG->restrictmodulesfor) && $CFG->restrictmodulesfor != 'none' && !empty($CFG->restrictbydefault)) {
             $course->restrictmodules = 1;
         }
+
+    /// Apply course default settings
+        $courseconfig = get_config('moodlecourse');
+        $course->format = $courseconfig->format;
+        $course->numsections = $courseconfig->numsections;
+        $course->hiddensections = $courseconfig->hiddensections;
+        $course->newsitems = $courseconfig->newsitems;
+        $course->showgrades =  $courseconfig->showgrades;
+        $course->showreports = $courseconfig->showreports;
+        $course->maxbytes = $courseconfig->maxbytes;
 
     /// Insert the record.
         if ($courseid = insert_record('course', $course)) {

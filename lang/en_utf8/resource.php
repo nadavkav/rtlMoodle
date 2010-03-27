@@ -1,4 +1,4 @@
-<?PHP // $Id: resource.php,v 1.7.4.7 2009/01/08 02:59:54 jerome Exp $ 
+<?PHP // $Id: resource.php,v 1.7.4.8 2009/09/24 02:30:17 jerome Exp $ 
       // resource.php - created with Moodle 1.7 beta + (2006101003)
 
 
@@ -54,7 +54,8 @@ $string['framesize'] = 'Frame size';
 $string['fulltext'] = 'Full text';
 $string['htmlfragment'] = 'HTML fragment';
 $string['imspackageloaded'] = 'Package loaded';
-$string['keepnavigationvisible'] = 'Keep page navigation visible on the same page';
+$string['keepnavigationvisible'] = 'Show navigation';
+$string['keepnavigationvisiblewarning'] = 'Note: some media files may ignore this setting';
 $string['localfile'] = 'Local file';
 $string['localfilechoose'] = 'Choose a local file (CD-ROM)';
 $string['localfilehelp'] = 'Help displaying local files';

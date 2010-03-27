@@ -1,4 +1,4 @@
-<?php //$Id: user_filter_forms.php,v 1.1.2.2 2007/11/13 09:02:12 skodak Exp $
+<?php //$Id: user_filter_forms.php,v 1.1.2.3 2009/09/26 16:28:24 skodak Exp $
 
 require_once($CFG->libdir.'/formslib.php');
 
@@ -19,6 +19,7 @@ class user_add_filter_form extends moodleform {
         if ($extraparams) {
             foreach ($extraparams as $key=>$value) {
                 $mform->addElement('hidden', $key, $value);
+                $mform->setType($key, PARAM_RAW);
             }
         }
 
@@ -57,6 +58,7 @@ class user_active_filter_form extends moodleform {
             if ($extraparams) {
                 foreach ($extraparams as $key=>$value) {
                     $mform->addElement('hidden', $key, $value);
+                    $mform->setType($key, PARAM_RAW);
                 }
             }
 

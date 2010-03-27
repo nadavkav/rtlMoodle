@@ -1,4 +1,4 @@
-<?php  //$Id: editlib.php,v 1.11.2.10 2008/07/05 22:46:58 skodak Exp $
+<?php  //$Id: editlib.php,v 1.11.2.12 2009/10/06 19:04:04 skodak Exp $
 
 function cancel_email_update($userid) {
     unset_user_preference('newemail', $userid);
@@ -28,7 +28,7 @@ function useredit_update_user_preference($usernew) {
     foreach($ua as $key=>$value) {
         if (strpos($key, 'preference_') === 0) {
             $name = substr($key, strlen('preference_'));
-            set_user_preference($name, $value, $usernew->id);
+            set_user_preference($name, stripslashes_recursive($value), $usernew->id);
         }
     }
 }
@@ -50,7 +50,7 @@ function useredit_update_bounces($user, $usernew) {
         //locked field
         return;
     }
-    if (!isset($user->email) || $user->email !== $usernew->email) {
+    if (!isset($user->email) || $user->email !== stripslashes($usernew->email)) {
         set_bounce_count($usernew,true);
         set_send_count($usernew,true);
     }

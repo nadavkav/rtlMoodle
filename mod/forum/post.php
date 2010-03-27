@@ -1,4 +1,4 @@
-<?php // $Id: post.php,v 1.154.2.17 2009/01/14 04:55:10 dongsheng Exp $
+<?php // $Id: post.php,v 1.154.2.18 2009/10/13 20:53:57 skodak Exp $
 
 //  Edit and save a new post to a discussion
 
@@ -495,9 +495,9 @@
 
             // MDL-11818
             if (($forum->type == 'single') && ($updatepost->parent == '0')){ // updating first post of single discussion type -> updating forum intro
-                $forum->intro = $updatepost->message;
+                $forum->intro = stripslashes($updatepost->message);
                 $forum->timemodified = time();
-                if (!update_record("forum", $forum)) {
+                if (!update_record("forum", addslashes_recursive($forum))) {
                     print_error("couldnotupdate", "forum", $errordestination);
                 }
             }

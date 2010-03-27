@@ -1,4 +1,4 @@
-<?php //$Id: restore.php,v 1.44.2.6 2009/03/30 10:04:57 dongsheng Exp $
+<?php //$Id: restore.php,v 1.44.2.7 2009/10/05 16:28:42 stronk7 Exp $
     //This script is used to configure and execute the restore proccess.
 
     //Define some globals for all the script
@@ -22,18 +22,6 @@
     $to = optional_param( 'to' );
     $method = optional_param( 'method' );
     $backup_unique_code = optional_param('backup_unique_code',0,PARAM_INT);
-
-    //Get and check course
-    if (! $course = get_record("course", "id", $id)) {
-        error("Course ID was incorrect (can't find it)");
-    }
-    // To some reasons, course_startdateoffset value was lost during restoring
-    // See MDL-17469
-    if (!empty($course->startdate) && !empty($SESSION->course_header->course_startdate)) {
-        $SESSION->restore->course_startdateoffset = $course->startdate - $SESSION->course_header->course_startdate;
-    } else {
-        $SESSION->restore->course_startdateoffset = 0;
-    }
 
     //Check login
     require_login();
@@ -126,7 +114,12 @@
         exit;
     }
 
-    //We are here, so me have a file.
+    //We are here, so we have a file.
+
+    //Get and check course
+    if (! $course = get_record("course", "id", $id)) {
+        error("Course ID was incorrect (can't find it)");
+    }
 
     //Print header
     if (has_capability('moodle/site:config', get_context_instance(CONTEXT_SYSTEM))) {

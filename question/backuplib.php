@@ -1,4 +1,4 @@
-<?php // $Id: backuplib.php,v 1.13.2.7 2009/01/20 04:24:01 tjhunt Exp $
+<?php // $Id: backuplib.php,v 1.13.2.8 2009/09/14 17:48:53 tjhunt Exp $
 /**
  * Question bank backup code.
  *
@@ -168,7 +168,7 @@
                                     "WHERE q.category= $category AND ".
                                     "bk.old_id=q.id AND ".
                                     "bk.backup_code = {$preferences->backup_unique_code} ".
-                                    "ORDER BY parent ASC, id");
+                                    "ORDER BY parent ASC, q.id");
         //If there are questions
         if ($questions) {
             //Write start tag
@@ -454,7 +454,7 @@
         //put the ids of the questions from all these categories into the db.
         $status = execute_sql("INSERT INTO {$CFG->prefix}backup_ids
                                        (backup_code, table_name, old_id, info)
-                                       SELECT '$backup_unique_code', 'question', q.id, ''
+                                       SELECT '$backup_unique_code', 'question', q.id, '" . sql_empty() . "'
                                        FROM {$CFG->prefix}question q, {$CFG->prefix}backup_ids bk
                                        WHERE q.category = bk.old_id AND bk.table_name = 'question_categories' 
                                        AND " . sql_compare_text('bk.info') . " = '$info'

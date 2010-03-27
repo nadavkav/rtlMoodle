@@ -1,4 +1,4 @@
-<?php //$Id: change_password_form.php,v 1.11.2.1 2007/11/23 22:12:35 skodak Exp $
+<?php //$Id: change_password_form.php,v 1.11.2.2 2009/09/28 16:16:24 skodak Exp $
 
 require_once $CFG->libdir.'/formslib.php';
 
@@ -47,7 +47,7 @@ class login_change_password_form extends moodleform {
         update_login_count();
 
         // ignore submitted username
-        if (!$user = authenticate_user_login($USER->username, $data['password'])) {
+        if (!$user = authenticate_user_login(addslashes($USER->username), $data['password'])) {
             $errors['password'] = get_string('invalidlogin');
             return $errors;
         }

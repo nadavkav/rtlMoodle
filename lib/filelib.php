@@ -1,4 +1,4 @@
-<?php //$Id: filelib.php,v 1.50.2.28 2009/05/07 08:55:50 nicolasconnault Exp $
+<?php //$Id: filelib.php,v 1.50.2.29 2009/07/28 16:41:58 stronk7 Exp $
 
 define('BYTESERVING_BOUNDARY', 's1k2o3d4a5k6s7'); //unique string constant
 
@@ -384,6 +384,8 @@ function get_mimetypes_array() {
         'm3u'  => array ('type'=>'audio/x-mpegurl', 'icon'=>'audio.gif'),
         'mp3'  => array ('type'=>'audio/mp3', 'icon'=>'audio.gif'),
         'mp4'  => array ('type'=>'video/mp4', 'icon'=>'video.gif'),
+        'm4v'  => array ('type'=>'video/mp4', 'icon'=>'video.gif'),
+        'm4a'  => array ('type'=>'audio/mp4', 'icon'=>'audio.gif'),
         'mpeg' => array ('type'=>'video/mpeg', 'icon'=>'video.gif'),
         'mpe'  => array ('type'=>'video/mpeg', 'icon'=>'video.gif'),
         'mpg'  => array ('type'=>'video/mpeg', 'icon'=>'video.gif'),

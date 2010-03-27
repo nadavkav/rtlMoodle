@@ -1,4 +1,4 @@
-<?php  // $Id: lib.php,v 1.538.2.77 2009/05/24 07:23:34 skodak Exp $
+<?php  // $Id: lib.php,v 1.538.2.79 2009/09/09 12:45:14 poltawski Exp $
    // Library of useful functions
 
 
@@ -58,6 +58,12 @@ function make_log_url($module, $url) {
             break;
         case 'notes':
             $url = "/notes/$url";
+            break;
+        case 'tag':
+            $url = "/tag/$url";
+            break;
+        case 'role':
+            $url = '/'.$url;
             break;
         default:
             $url = "/mod/$module/$url";

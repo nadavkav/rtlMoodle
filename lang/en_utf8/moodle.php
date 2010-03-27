@@ -1,4 +1,4 @@
-<?PHP // $Id: moodle.php,v 1.141.2.64 2009/05/27 03:00:06 jerome Exp $
+<?PHP // $Id: moodle.php,v 1.141.2.70 2009/10/21 07:51:41 moodler Exp $
       // moodle.php - created with Moodle 1.7 beta + (2006101003)
 
 
@@ -1120,6 +1120,7 @@ $string['noteachersyet'] = 'No teachers in this course yet';
 $string['notenrollable'] = 'This course is not enrollable at the moment.';
 $string['notenrolled'] = '$a is not enrolled in this course.';
 $string['notenrolledprofile'] = 'This profile is not available because this user is not enrolled in this course.';
+$string['noteusercannotrolldatesoncontext'] = '<strong>Note:</strong> The ability to roll dates when restoring this backup has been disabled because you lack the required permissions.';
 $string['noteuserschangednonetocourse'] = '<strong>Note:</strong> Course users need to be restored when restoring user data (in activities, files or messages). This setting has been changed for you.';
 $string['nothingnew'] = 'Nothing new since your last login';
 $string['nothingtodisplay'] = 'Nothing to display';
@@ -1238,6 +1239,7 @@ $string['publicdirectory2'] = 'Publish the site name with a link';
 $string['publicdirectorytitle'] = 'See the current list of sites';
 $string['publicsitefileswarning'] = 'Note: files placed here can be accessed by anyone';
 $string['publicsitefileswarning2'] = 'Note: Files placed here can be accessed by anyone who knows (or can guess) the URL. For security reasons, it is recommended that any backup files are deleted immediately after restoring them.';
+$string['publicsitefileswarning3'] = 'Note: Files placed here can be accessed by anyone who knows (or can guess) the URL. <br />For security reasons, backup files should be saved in the secure backupdata folder only.';
 $string['question'] = 'Question';
 $string['questionsinthequestionbank'] = 'Questions in the question bank';
 $string['readinginfofrombackup'] = 'Reading info from backup';

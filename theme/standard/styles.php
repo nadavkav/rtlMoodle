@@ -1,4 +1,4 @@
-<?PHP /*  $Id: styles.php,v 1.65 2006/04/07 15:07:54 moodler Exp $ */
+<?PHP /*  $Id: styles.php,v 1.65.14.1 2009/07/29 07:42:36 moodler Exp $ */
 
 /// Every theme should contain a copy of this script.  It lets us 
 /// set up variables and so on before we include the raw CSS files.
@@ -7,7 +7,7 @@
 /// THERE SHOULD BE NO NEED TO MODIFY THIS FILE!!  USE CONFIG.PHP INSTEAD.
 
 
-    $lifetime  = 600;                                   // Seconds to cache this stylesheet
+    $lifetime  = (48 * 3600) + 1;                       // Seconds to cache this stylesheet (2 days for standard)
     $nomoodlecookie = true;                             // Cookies prevent caching, so don't use them
     require_once("../../config.php");                   // Load up the Moodle libraries
     $themename = basename(dirname(__FILE__));           // Name of the folder we are in

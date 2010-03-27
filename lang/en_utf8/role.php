@@ -1,4 +1,4 @@
-<?PHP // $Id: role.php,v 1.47.2.18 2008/12/10 02:57:51 tjhunt Exp $
+<?PHP // $Id: role.php,v 1.47.2.20 2009/10/06 01:13:21 stronk7 Exp $
       // role.php - created with Moodle 1.7 beta + (2006101003)
 
 
@@ -32,6 +32,8 @@ $string['course:bulkmessaging'] = 'Send a message to many people';
 $string['course:changefullname'] = 'Change course full name';
 $string['course:changeshortname'] = 'Change course short name';
 $string['course:changeidnumber'] = 'Change course ID number';
+$string['course:changecategory'] = 'Change course category';
+$string['course:changesummary'] = 'Change course summary';
 $string['course:create'] = 'Create courses';
 $string['course:delete'] = 'Delete courses';
 $string['course:manageactivities'] = 'Manage activities';
@@ -126,6 +128,7 @@ $string['resetrole'] = 'Reset to defaults';
 $string['resetrolenolegacy'] = 'Clear permissions';
 $string['resetrolesure'] = 'Are you sure that you want to reset role \"$a->name ($a->shortname)\" to defaults?<p></p>The defaults are taken from the selected legacy capability ($a->legacytype).';
 $string['resetrolesurenolegacy'] = 'Are you sure that you want to clear all permissions defined in this role \"$a->name ($a->shortname)\"?';
+$string['restore:rolldates'] = 'Allowed to roll activity configuration dates on restore';
 $string['risks'] = 'Risks';
 $string['role:assign'] = 'Assign roles to users';
 $string['role:manage'] = 'Create and manage roles';

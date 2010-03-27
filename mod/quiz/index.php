@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.46.2.14 2009/06/09 08:23:33 samhemelryk Exp $
+<?php // $Id: index.php,v 1.46.2.15 2009/10/04 18:49:10 tjhunt Exp $
 /**
  * This page lists all the instances of quiz in a particular course
  *
@@ -78,7 +78,7 @@
         array_push($align, 'left');
         $showing = 'stats';
     } else if (has_any_capability(array('mod/quiz:reviewmyattempts', 'mod/quiz:attempt'), $coursecontext)) {
-        array_push($headings, get_string('bestgrade', 'quiz'));
+        array_push($headings, get_string('grade', 'quiz'));
         array_push($align, 'left');
         if ($showfeedback) {
             array_push($headings, get_string('feedback', 'quiz'));

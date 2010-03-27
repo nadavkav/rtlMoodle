@@ -1,11 +1,11 @@
-<?php //$Id: block_rss_client_action.php,v 1.54.2.6 2008/06/08 18:29:51 dongsheng Exp $
+<?php //$Id: block_rss_client_action.php,v 1.54.2.7 2009/07/29 06:21:50 tjhunt Exp $
 
 /*******************************************************************
 * This file contains no classes. It will display a list of existing feeds
 * defined for the site and allow add/edit/delete of site feeds.
 *
 * @author Daryl Hawes
-* @version  $Id: block_rss_client_action.php,v 1.54.2.6 2008/06/08 18:29:51 dongsheng Exp $
+* @version  $Id: block_rss_client_action.php,v 1.54.2.7 2009/07/29 06:21:50 tjhunt Exp $
 * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
 * @package base
 ******************************************************************/
@@ -276,20 +276,15 @@ if ($act == 'updfeed') {
             print '<a href="'. $rss->items[$y]['link'] .'" target="_blank"><strong>'. $rss->items[$y]['title'];
             print '</strong></a>'."\n";
             print '</td>'."\n";
-            if (file_exists($CFG->dirroot .'/blog/lib.php')) {
-                //Blog module is installed - provide "blog this" link
-                print '<td align="right">'."\n";
+            print '<td align="right">'."\n";
 
-                /// MDL-9291, blog this feature needs further discussion/implementation
-                /// temporarily disabling for now.
+            // MDL-9291, blog this feature needs further discussion/implementation
+            // temporarily disabling for now.
 
-                // print '<img src="'. $CFG->pixpath .'/blog/blog.gif" alt="'. get_string('blogthis', 'blog').'" title="'. get_string('blogthis', 'blog') .'" border="0" align="middle" />'."\n";
-                //print '<a href="'. $CFG->wwwroot .'/blog/blogthis.php?userid='. $USER->id .'&act=use&item='. $y .'&rssid='. $rssid .'"><small><strong>'. get_string('blogthis', 'blog') .'</strong></small></a>'."\n";
-            } else {
-                print '<td>&nbsp;';
-            }
+            // print '<img src="'. $CFG->pixpath .'/blog/blog.gif" alt="'. get_string('blogthis', 'blog').'" title="'. get_string('blogthis', 'blog') .'" border="0" align="middle" />'."\n";
+            // print '<a href="'. $CFG->wwwroot .'/blog/blogthis.php?userid='. $USER->id .'&act=use&item='. $y .'&rssid='. $rssid .'"><small><strong>'. get_string('blogthis', 'blog') .'</strong></small></a>'."\n";
             print '</td></tr>'."\n";
-            print '<tr><td colspan=2><small>';
+            print '<tr><td colspan="2"><small>';
             print $rss->items[$y]['description'] .'</small></td></tr>'."\n";
         }
         print '</table>'."\n";

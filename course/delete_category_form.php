@@ -1,4 +1,4 @@
-<?php  //$Id: delete_category_form.php,v 1.1.2.3 2008/12/08 07:28:05 tjhunt Exp $
+<?php  //$Id: delete_category_form.php,v 1.1.2.4 2009/09/26 16:23:34 skodak Exp $
 
 require_once($CFG->libdir.'/formslib.php');
 require_once($CFG->libdir . '/questionlib.php');
@@ -110,11 +110,14 @@ class delete_category_form extends moodleform {
             }
         } else {
             $mform->addElement('hidden', 'fulldelete', 1);
+            $mform->setType('fulldelete', PARAM_INT);
             $mform->addElement('static', 'emptymessage', '', get_string('deletecategoryempty'));
         }
 
         $mform->addElement('hidden', 'delete');
+        $mform->setType('delete', PARAM_ALPHANUM);
         $mform->addElement('hidden', 'sure');
+        $mform->setType('sure', PARAM_ALPHANUM);
         $mform->setDefault('sure', md5(serialize($category)));
 
 //--------------------------------------------------------------------------------

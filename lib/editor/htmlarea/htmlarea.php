@@ -54,7 +54,7 @@
 // Version 3.0 developed by Mihai Bazon.
 //   http://dynarch.com/mishoo
 //
-// $Id: htmlarea.php,v 1.24.2.7 2009/06/09 04:58:39 jonathanharker Exp $
+// $Id: htmlarea.php,v 1.24.2.8 2009/08/27 03:21:33 jerome Exp $
 
 if (typeof _editor_url == "string") {
     // Leave exactly one backslash at the end of _editor_url
@@ -719,7 +719,7 @@ HTMLArea.prototype.generate = function () {
     // create the IFRAME
     var iframe = document.createElement("iframe");
 
-    iframe.src = "<?php echo $url ?>blank.html";
+    iframe.src = "<?php echo $url; ?>blank.html";
 
     iframe.className = "iframe";
 

@@ -1,4 +1,4 @@
-<?PHP // $Id: index.php,v 1.194.2.21 2009/04/28 18:50:12 skodak Exp $
+<?PHP // $Id: index.php,v 1.194.2.22 2009/10/02 06:49:47 dongsheng Exp $
 
 //  Lists all the users within a given course
 
@@ -787,7 +787,7 @@
 
     }
 
-    if ($bulkoperations && $totalcount > ($perpage*3)) {
+    if (has_capability('moodle/site:viewparticipants', $context) && $totalcount > ($perpage*3)) {
         echo '<form action="index.php" class="searchform"><div><input type="hidden" name="id" value="'.$course->id.'" />'.get_string('search').':&nbsp;'."\n";
         echo '<input type="text" name="search" value="'.s($search).'" />&nbsp;<input type="submit" value="'.get_string('search').'" /></div></form>'."\n";
     }

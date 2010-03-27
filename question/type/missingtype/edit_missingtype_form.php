@@ -1,4 +1,4 @@
-<?php  // $Id: edit_missingtype_form.php,v 1.4.2.4 2009/02/19 01:09:35 tjhunt Exp $
+<?php  // $Id: edit_missingtype_form.php,v 1.4.2.5 2009/07/29 18:59:27 stronk7 Exp $
 /**
  * Defines the editing form for the missingtype question type.
  *
@@ -27,7 +27,8 @@ class question_edit_missingtype_form extends question_edit_form {
     function set_data($question) {
         if (isset($question->options)){
             $answers = $question->options->answers;
-            if (count($answers)) {
+            $default_values = array();
+            if (is_array($answers) && count($answers)) {
                 $key = 0;
                 foreach ($answers as $answer){
                     $default_values['answer['.$key.']'] = $answer->answer;

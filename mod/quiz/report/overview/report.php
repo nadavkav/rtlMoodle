@@ -2,7 +2,7 @@
 /**
  * This script lists student attempts
  *
- * @version $Id: report.php,v 1.98.2.48 2009/06/05 06:54:34 tjhunt Exp $
+ * @version $Id: report.php,v 1.98.2.49 2009/09/18 13:42:19 tjhunt Exp $
  * @author Martin Dougiamas, Tim Hunt and others.
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package quiz
@@ -584,7 +584,7 @@ class quiz_report extends quiz_default_report {
                         $groupaveragerow = array('fullname' => get_string('groupavg', 'grades'),
                                 'sumgrades' => round($groupaverage->grade, $quiz->decimalpoints),
                                 'feedbacktext'=> quiz_report_feedback_for_grade($groupaverage->grade, $quiz->id));
-                        if($detailedmarks && $qmsubselect) {
+                        if($detailedmarks && ($qmsubselect || $quiz->attempts == 1)) {
                             $avggradebyq = quiz_get_average_grade_for_questions($quiz, $groupstudentslist);
                             $groupaveragerow += quiz_format_average_grade_for_questions($avggradebyq, $questions, $quiz, $download);
                         }
@@ -594,7 +594,7 @@ class quiz_report extends quiz_default_report {
                     $overallaveragerow = array('fullname' => get_string('overallaverage', 'grades'),
                                 'sumgrades' => round($overallaverage->grade, $quiz->decimalpoints),
                                 'feedbacktext'=> quiz_report_feedback_for_grade($overallaverage->grade, $quiz->id));
-                    if($detailedmarks && $qmsubselect) {
+                    if($detailedmarks && ($qmsubselect || $quiz->attempts == 1)) {
                         $avggradebyq = quiz_get_average_grade_for_questions($quiz, $studentslist);
                         $overallaveragerow += quiz_format_average_grade_for_questions($avggradebyq, $questions, $quiz, $download);
                     }

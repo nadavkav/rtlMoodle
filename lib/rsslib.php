@@ -1,4 +1,4 @@
-<?php  // $Id: rsslib.php,v 1.52.2.5 2009/05/22 15:17:22 sam_marshall Exp $
+<?php  // $Id: rsslib.php,v 1.52.2.6 2009/07/29 05:59:01 tjhunt Exp $
        // This file contains all the common stuff to be used in RSS System
 
 //This function returns the icon (from theme) with the link to rss/file.php
@@ -471,7 +471,6 @@ function rss_get_form($act='none', $url='', $rssid='', $preferredtitle='', $shar
     $returnstring = '';
 
     $returnstring .= '<form action="'. $CFG->wwwroot .'/blocks/rss_client/block_rss_client_action.php" method="post" id="block_rss">'."\n";
-    print_location_comment(__FILE__,__LINE__);
     $returnstring .= '<div id="rss_table">'."\n";
     if ($act == 'rssedit') {
         $returnstring .= $strupdatefeed;
@@ -530,8 +529,9 @@ function rss_get_form($act='none', $url='', $rssid='', $preferredtitle='', $shar
     }
 
     $returnstring .= '" />&nbsp;'. $validatestring ."\n";
-    // $returnstring .= '</div></form>'."\n"; // Avoiding nested forms... Ugly temporary hack #8922
-    return $returnstring . print_location_comment(__FILE__, __LINE__, true);
+    $returnstring .= '</div></form>'."\n";
+    
+    return $returnstring;
 }
 
 

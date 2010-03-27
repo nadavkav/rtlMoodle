@@ -17,7 +17,7 @@ define('CHAT_SIDEKICK_MESSAGE',     0x22);
 define('CHAT_SIDEKICK_BEEP',        0x23);
 
 $phpversion = phpversion();
-echo 'Moodle chat daemon v1.0 on PHP '.$phpversion." (\$Id: chatd.php,v 1.32.4.3 2008/10/08 06:41:55 dongsheng Exp $)\n\n";
+echo 'Moodle chat daemon v1.0 on PHP '.$phpversion." (\$Id: chatd.php,v 1.32.4.4 2009/10/03 07:58:19 tjhunt Exp $)\n\n";
 
 /// Set up all the variables we need   /////////////////////////////////////
 
@@ -72,7 +72,7 @@ class ChatConnection {
 
     function ChatConnection($resource) {
         $this->handle = $resource;
-        @socket_getpeername($this->handle, &$this->ip, &$this->port);
+        @socket_getpeername($this->handle, $this->ip, $this->port);
     }
 }
 

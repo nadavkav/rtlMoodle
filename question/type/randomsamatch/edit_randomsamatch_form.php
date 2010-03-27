@@ -1,4 +1,4 @@
-<?php  // $Id: edit_randomsamatch_form.php,v 1.4.2.5 2009/02/19 01:09:33 tjhunt Exp $
+<?php  // $Id: edit_randomsamatch_form.php,v 1.4.2.6 2009/09/26 16:27:18 skodak Exp $
 /**
  * Defines the editing form for the randomsamatch question type.
  *
@@ -30,6 +30,7 @@ class question_edit_randomsamatch_form extends question_edit_form {
         $mform->setType('feedback', PARAM_RAW);
 
         $mform->addElement('hidden', 'fraction', 0);
+        $mform->setType('fraction', PARAM_RAW);
     }
 
     function set_data($question) {

@@ -1,4 +1,4 @@
-<?php  // $Id: datasetitems_form.php,v 1.9.2.5 2009/05/24 21:06:34 pichetp Exp $
+<?php  // $Id: datasetitems_form.php,v 1.9.2.6 2009/09/26 16:27:18 skodak Exp $
 class question_dataset_dependent_items_form extends moodleform {
     /**
      * Question object with options and answers already loaded by get_question_options
@@ -84,7 +84,9 @@ class question_dataset_dependent_items_form extends moodleform {
             $this->qtypeobj->custom_generator_tools_part(&$mform, $idx, $j);
             $idx++;
             $mform->addElement('hidden', "definition[$j]");
+            $mform->setType("definition[$j]", PARAM_RAW);
             $mform->addElement('hidden', "itemid[$j]");
+            $mform->setType("itemid[$j]", PARAM_RAW);
             $mform->addElement('static', "divider[$j]", '', '<hr />');
             $j++;
         }

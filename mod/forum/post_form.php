@@ -1,4 +1,4 @@
-<?php  // $Id: post_form.php,v 1.21.2.6 2008/07/18 13:18:28 ericmerrill Exp $
+<?php  // $Id: post_form.php,v 1.21.2.7 2009/09/26 16:25:48 skodak Exp $
 
 require_once($CFG->libdir.'/formslib.php');
 
@@ -39,6 +39,7 @@ class mod_forum_post_form extends moodleform {
 
             $mform->addElement('static', 'subscribemessage', get_string('subscription', 'forum'), get_string('everyoneissubscribed', 'forum'));
             $mform->addElement('hidden', 'subscribe');
+            $mform->setType('subscribe', PARAM_INT);
             $mform->setHelpButton('subscribemessage', array('subscription', get_string('subscription', 'forum'), 'forum'));
 
         } else if (isset($forum->forcesubscribe)&& $forum->forcesubscribe != FORUM_DISALLOWSUBSCRIBE ||
@@ -53,6 +54,7 @@ class mod_forum_post_form extends moodleform {
         } else if ($forum->forcesubscribe == FORUM_DISALLOWSUBSCRIBE) {
             $mform->addElement('static', 'subscribemessage', get_string('subscription', 'forum'), get_string('disallowsubscribe', 'forum'));
             $mform->addElement('hidden', 'subscribe');
+            $mform->setType('subscribe', PARAM_INT);
             $mform->setHelpButton('subscribemessage', array('subscription', get_string('subscription', 'forum'), 'forum'));
         }
 

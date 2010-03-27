@@ -1,4 +1,4 @@
-<?PHP //$Id: backuplib.php,v 1.7 2006/01/25 07:20:13 gbateson Exp $
+<?PHP //$Id: backuplib.php,v 1.7.14.1 2009/08/25 01:14:36 gbateson Exp $
     //This php script contains all the stuff to backup/restore
     //quiz mods
     //-----------------------------------------------------------
@@ -323,5 +323,15 @@
             $info[$instance->id.'1'][1] = count_records_sql("SELECT COUNT(*) FROM $table WHERE $select");
         }
         return $info;
+    }
+
+    // Return content encoded to support interactivities linking.
+    // Called by "backup_encode_absolute_links()" in backup/backuplib.php
+    // Content will be decoded by "hotpot_decode_content_links()"
+    function hotpot_encode_content_links ($content, $preferences) {
+        global $CFG;
+        $base = preg_quote("$CFG->wwwroot/mod/hotpot/", '/');
+        $search = "/($base)([a-z]+).php\?([a-z]+)\=([0-9]+)/";
+        return preg_replace($search, '$@HOTPOT*$2*$3*$4@$', $content);
     }
 ?>

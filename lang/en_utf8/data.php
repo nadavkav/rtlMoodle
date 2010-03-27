@@ -1,4 +1,4 @@
-<?PHP // $Id: data.php,v 1.53.4.20 2009/05/06 10:16:54 stronk7 Exp $
+<?PHP // $Id: data.php,v 1.53.4.21 2009/09/27 18:07:53 skodak Exp $
 
 $string['action'] = 'Action';
 $string['add'] = 'Add entry';
@@ -178,6 +178,7 @@ $string['nomatch'] = 'No matching entries found!';
 $string['nomaximum'] = 'No maximum';
 $string['norecords'] = 'No entries in database';
 $string['nosingletemplate'] = 'Single template is not yet defined';
+$string['notapproved'] = 'Entry is not approved yet.';
 $string['notinjectivemap'] = 'Not an injective map';
 $string['number'] = 'Number';
 $string['numberrssarticles'] = 'RSS articles';

@@ -1,4 +1,4 @@
-<?PHP // $Id: config-dist.php,v 1.103.2.6 2009/05/31 17:32:57 wildgirl Exp $
+<?PHP // $Id: config-dist.php,v 1.103.2.8 2009/10/05 17:07:46 skodak Exp $
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
 // Moodle configuration file                                             //
@@ -131,6 +131,11 @@ $CFG->admin = 'admin';
 //
 // These are additional tweaks for which no GUI exists in Moodle yet.
 //
+// Starting in PHP 5.3 administrators should specify default timezone
+// in PHP.ini, you can also specify it here if needed.
+// See details at: http://php.net/manual/en/function.date-default-timezone-set.php
+// List of time zones at: http://php.net/manual/en/timezones.php
+//     date_default_timezone_set('Australia/Perth');
 //
 // Change the key pair lifetime for Moodle Networking
 // The default is 28 days. You would only want to change this if the key
@@ -178,7 +183,13 @@ $CFG->admin = 'admin';
 // This setting will prevent the 'My Courses' page being displayed when a student
 // logs in. The site front page will always show the same (logged-out) view.
 //     $CFG->disablemycourses = true;
-// 
+//
+// Enable this option if you need fully working default frontpage role,
+// please note it might cause serious memory and performance issues,
+// also there should not be any negative capabilities in default
+// frontpage role (MDL-19039).
+//     $CFG->fullusersbycapabilityonfrontpage = true;
+//
 // If this setting is set to true, then Moodle will track the IP of the 
 // current user to make sure it hasn't changed during a session.  This 
 // will prevent the possibility of sessions being hijacked via XSS, but it 

@@ -1,4 +1,4 @@
-<?php  // $Id: request_form.php,v 1.11.2.4 2008/12/10 02:57:52 tjhunt Exp $
+<?php  // $Id: request_form.php,v 1.11.2.5 2009/09/26 16:23:34 skodak Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -128,6 +128,7 @@ class reject_request_form extends moodleform {
         $mform =& $this->_form;
 
         $mform->addElement('hidden', 'reject', 0);
+        $mform->setType('reject', PARAM_INT);
 
         $mform->addElement('header','coursedetails', get_string('coursereasonforrejecting'));
 

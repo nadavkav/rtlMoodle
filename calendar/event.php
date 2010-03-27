@@ -1,4 +1,4 @@
-<?php // $Id: event.php,v 1.74.2.5 2008/07/02 07:08:22 dongsheng Exp $
+<?php // $Id: event.php,v 1.74.2.6 2009/10/02 06:12:26 moodler Exp $
 
 /////////////////////////////////////////////////////////////////////////////
 //                                                                         //
@@ -540,14 +540,15 @@
 
     echo '<td class="sidecalendar">';
     echo '<div class="sideblock">';
-    echo '<div class="header">'.get_string('eventskey', 'calendar').'</div>';
+    echo '<div class="header"><h2>'.get_string('eventskey', 'calendar').'</h2></div>';
     echo '<div class="filters">';
     echo calendar_filter_controls('event', 'action='.$action.'&amp;type='.$eventtype.'&amp;id='.$eventid);
     echo '</div>';
     echo '</div>';
 
     echo '<div class="sideblock">';
-    echo '<div class="header">'.get_string('monthlyview', 'calendar').'</div>';
+    echo '<div class="header"><h2>'.get_string('monthlyview', 'calendar').'</h2></div>';
+
     echo '<div class="minicalendarblock minicalendartop">';
     echo calendar_top_controls('display', array('id' => $urlcourse, 'm' => $prevmon, 'y' => $prevyr));
     echo calendar_get_mini($courses, $groups, $users, $prevmon, $prevyr);

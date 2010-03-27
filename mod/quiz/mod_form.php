@@ -1,4 +1,4 @@
-<?php // $Id: mod_form.php,v 1.28.2.8 2009/04/16 03:12:20 tjhunt Exp $
+<?php // $Id: mod_form.php,v 1.28.2.11 2009/10/05 03:05:38 jerome Exp $
 require_once ($CFG->dirroot.'/course/moodleform_mod.php');
 
 require_once("$CFG->dirroot/mod/quiz/locallib.php");
@@ -194,8 +194,14 @@ class mod_quiz_mod_form extends moodleform_mod {
 //-------------------------------------------------------------------------------
         $mform->addElement('header', 'security', get_string('security', 'form'));
 
-        $mform->addElement('selectyesno', 'popup', get_string("popup", "quiz"));
-        $mform->setHelpButton('popup', array("popup", get_string("popup", "quiz"), "quiz"));
+        $options = array(
+                    0 => get_string('none', 'quiz'),
+                    1 => get_string('popupwithjavascriptsupport', 'quiz'));
+        if (!empty($CFG->enablesafebrowserintegration)) {
+            $options[2] = get_string('requiresafeexambrowser', 'quiz');
+        }
+        $mform->addElement('select', 'popup', get_string('browsersecurity', 'quiz'), $options);
+        $mform->setHelpButton('popup', array('browsersecurity', get_string('browsersecurity', 'quiz'), 'quiz'));
         $mform->setAdvanced('popup', $CFG->quiz_fix_popup);
         $mform->setDefault('popup', $CFG->quiz_popup);
 
@@ -222,6 +228,7 @@ class mod_quiz_mod_form extends moodleform_mod {
         $mform->setHelpButton('overallfeedbackhdr', array('overallfeedback', get_string('overallfeedback', 'quiz'), 'quiz'));
 
         $mform->addElement('hidden', 'grade', $CFG->quiz_maximumgrade);
+        $mform->setType('grade', PARAM_RAW);
         if (empty($this->_cm)) {
             $needwarning = $CFG->quiz_maximumgrade == 0;
         } else {

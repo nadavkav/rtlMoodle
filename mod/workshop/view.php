@@ -1,4 +1,4 @@
-<?php  // $Id: view.php,v 1.67.2.5 2009/05/07 12:13:10 ericmerrill Exp $
+<?php  // $Id: view.php,v 1.67.2.6 2009/10/16 11:12:34 mudrd8mz Exp $
 
 /*************************************************
     ACTIONS handled are:
@@ -106,7 +106,7 @@
             foreach ($submissions as $submission) {
                 $grade = workshop_submission_grade($workshop, $submission);
                 if ($workshop->wtype) {
-                    $gradinggrade = workshop_gradinggrade($workshop, $student);
+                    $gradinggrade = workshop_gradinggrade($workshop, $USER);
                 } else { // ignore grading grades for simple assignments
                     $gradinggrade = 0;
                 }
