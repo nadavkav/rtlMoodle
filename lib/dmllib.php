@@ -1,4 +1,4 @@
-<?php // $Id: dmllib.php,v 1.116.2.33 2009/09/26 11:55:57 skodak Exp $
+<?php // $Id: dmllib.php,v 1.116.2.34 2010/01/07 15:02:41 stronk7 Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -1899,7 +1899,9 @@ function sql_isempty($tablename, $fieldname, $nullablefield, $textfield) {
             break;
     }
 
-    return ' ' . $sql . ' '; /// Adding spaces to avoid wrong SQLs due to concatenation
+    // Add spaces to avoid wrong SQLs due to concatenation.
+    // Add brackets to avoid operator precedence problems.
+    return ' (' . $sql . ') ';
 }
 
 /**

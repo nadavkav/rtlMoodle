@@ -1,4 +1,4 @@
-<?php  // $Id: graphlib.php,v 1.20.10.5 2009/11/19 16:56:49 tjhunt Exp $
+<?php  // $Id: graphlib.php,v 1.20.10.6 2010/01/18 15:24:19 tjhunt Exp $
 
 /*
 Graph Class. PHP Class to draw line, point, bar, and area graphs, including numeric x-axis and double y-axis.
@@ -943,7 +943,7 @@ function init_legend() {
   $textWidth = $this->calculated['legend']['boundary_box_max']['width']; // width of largest legend item.
   $textHeight = $this->calculated['legend']['boundary_box_max']['height']; // use height as size to use for colour square in legend.
   $width = $padding * 2 + $textWidth + $textHeight * 2;  // left and right padding + maximum text width + space for square
-  $height = $padding * ($numSets + 1) + $sumTextHeight; // top and bottom padding + padding between text + text.
+  $height = ($padding + $textHeight) * $numSets + $padding; // top and bottom padding + padding between text + text.
 
 
   $this->calculated['legend']['boundary_box_all'] = array('width'     => $width,

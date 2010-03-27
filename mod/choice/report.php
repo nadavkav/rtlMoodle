@@ -1,4 +1,4 @@
-<?php  // $Id: report.php,v 1.60.2.7 2009/11/22 11:09:31 skodak Exp $
+<?php  // $Id: report.php,v 1.60.2.8 2009/11/30 17:12:18 sam_marshall Exp $
 
     require_once("../../config.php");
     require_once("lib.php");
@@ -47,7 +47,7 @@
         $groupmode = groups_get_activity_groupmode($cm);
         if ($groupmode) {
             groups_get_activity_group($cm, true);
-            groups_print_activity_menu($cm, 'report.php?id='.$id);
+            groups_print_activity_menu($cm, $CFG->wwwroot . '/mod/choice/report.php?id='.$id);
         }
     } else {
         $groupmode = groups_get_activity_groupmode($cm);

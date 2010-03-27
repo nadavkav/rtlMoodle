@@ -1,4 +1,4 @@
-<?php // $Id: peer.php,v 1.9.2.3 2008/08/27 03:33:14 peterbulmer Exp $
+<?php // $Id: peer.php,v 1.9.2.5 2010/02/17 22:18:11 poltawski Exp $
 /**
  * An object to represent lots of information about an RPC-peer machine
  *
@@ -107,32 +107,15 @@ class mnet_peer {
     }
 
     function delete() {
-        if ($this->deleted) return true;
-
-        $users = count_records('user','mnethostid', $this->id);
-        if ($users > 0) {
-            $this->deleted = 1;
-            $this->updateparams->deleted = 1;
+        if ($this->deleted) { 
+            return true;
         }
-
-        $actions = count_records('mnet_log','hostid', $this->id);
-        if ($actions > 0) {
-            $this->deleted = 1;
-            $this->updateparams->deleted = 1;
-        }
-
-        $obj = delete_records('mnet_rpc2host', 'host_id', $this->id);
 
         $this->delete_all_sessions();
 
-        // If we don't have any activity records for which the mnet_host table
-        // provides a foreign key, then we can delete the record. Otherwise, we
-        // just mark it as deleted.
-        if (0 == $this->deleted) {
-            delete_records('mnet_host', "id", $this->id);
-        } else {
-            $this->commit();
-        }
+        $this->deleted = 1;
+        $this->updateparams->deleted = 1;
+        $this->commit();
     }
 
     function count_live_sessions() {

@@ -1,4 +1,4 @@
-<?php /// $Id: install.php,v 1.80.2.20 2009/11/17 09:55:52 samhemelryk Exp $
+<?php /// $Id: install.php,v 1.80.2.21 2010/02/21 14:46:49 poltawski Exp $
       /// install.php - helps admin user to create a config.php file
 
 /// If config.php exists already then we are not needed.
@@ -533,6 +533,7 @@ if ($nextstage == SAVE) {
     $str .= 'unset($CFG);'."\r\n";
     $str .= "\r\n";
 
+    $str .= '$CFG = new stdClass();'."\r\n";
     $str .= '$CFG->dbtype    = \''.$INSTALL['dbtype']."';\r\n";
     $str .= '$CFG->dbhost    = \''.addslashes($INSTALL['dbhost'])."';\r\n";
     if (!empty($INSTALL['dbname'])) {

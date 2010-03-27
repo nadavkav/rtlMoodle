@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.46.2.15 2009/10/04 18:49:10 tjhunt Exp $
+<?php // $Id: index.php,v 1.46.2.16 2009/12/16 00:51:28 andyjdavis Exp $
 /**
  * This page lists all the instances of quiz in a particular course
  *
@@ -52,6 +52,9 @@
         }
         if (quiz_has_feedback($quiz->id)) {
             $showfeedback=true;
+        }
+        if($showclosingheader && $showfeedback) {
+            break;
         }
     }
 

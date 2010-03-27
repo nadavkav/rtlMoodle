@@ -36,8 +36,8 @@
         if (isset($SESSION->scorm_status)) {
             $status = $SESSION->scorm_status;
         }
-        if (isset($SESSION->attempt)) {
-            $attempt = $SESSION->attempt;
+        if (isset($SESSION->scorm_attempt)) {
+            $attempt = $SESSION->scorm_attempt;
         } else {
             $attempt = 1;
         }
@@ -261,19 +261,18 @@
                                 $id = scorm_insert_track($USER->id, $scorm->id, $sco->id, $attempt, 'cmi.core.lesson_status', 'browsed');
                             }
                             if ($mode == 'normal') {
-                                if ($lessonstatus == 'completed') {
-									if ($sco = scorm_get_sco($scoid)) {
-                                        if (!empty($sco->mastery_score)) {
-                                            if (!empty($score)) {
-                                                if ($score >= $sco->mastery_score) {
-                                                    $lessonstatus = 'passed';
-                                                } else {
-                                                    $lessonstatus = 'failed';
-                                                }
+
+                                if ($sco = scorm_get_sco($scoid)) {
+                                    if (!empty($sco->mastery_score)) {
+                                        if (!empty($score)) {
+                                            if ($score >= $sco->mastery_score) {
+                                                $lessonstatus = 'passed';
+                                            } else {
+                                                $lessonstatus = 'failed';
                                             }
                                         }
-										$id = scorm_insert_track($USER->id, $scorm->id, $sco->id, $attempt, 'cmi.core.lesson_status', $lessonstatus);
-									}
+                                    }
+                                    $id = scorm_insert_track($USER->id, $scorm->id, $sco->id, $attempt, 'cmi.core.lesson_status', $lessonstatus);
                                 }
                             }
                         }

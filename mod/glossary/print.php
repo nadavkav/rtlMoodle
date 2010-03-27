@@ -1,4 +1,4 @@
-<?php   // $Id: print.php,v 1.41.2.2 2009/01/16 04:55:38 dongsheng Exp $
+<?php   // $Id: print.php,v 1.41.2.3 2009/11/26 11:30:34 stronk7 Exp $
 
     global $CFG;
 
@@ -30,10 +30,10 @@
         $entriesbypage = $CFG->glossary_entbypage;
     }
 
-    print_header();
-
     require_course_login($course, true, $cm);
     $context = get_context_instance(CONTEXT_MODULE, $cm->id);
+
+    print_header();
 
 /// Loading the textlib singleton instance. We are going to need it.
     $textlib = textlib_get_instance();

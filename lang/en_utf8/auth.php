@@ -1,4 +1,4 @@
-<?php // $Id: auth.php,v 1.30.2.21 2009/03/25 09:42:25 poltawski Exp $
+<?php // $Id: auth.php,v 1.30.2.23 2009/12/23 02:07:08 rwijaya Exp $
       // auth.php - created with Moodle 1.5 UNSTABLE DEVELOPMENT (2005010100)
 
 
@@ -417,4 +417,10 @@ $string['getanothercaptcha'] = 'Get another CAPTCHA';
 $string['getanaudiocaptcha'] = 'Get an audio CAPTCHA';
 $string['getanimagecaptcha'] = 'Get an image CAPTCHA';
 $string['recaptcha'] = 'reCAPTCHA';
+$string['informminpasswordlength'] = 'at least $a characters';
+$string['informminpassworddigits'] = 'at least $a digit(s)';
+$string['informminpasswordlower'] = 'at least $a lower case letter(s)';
+$string['informminpasswordnonalphanum'] = 'at least $a non-alphanumeric character(s)';
+$string['informminpasswordupper'] = 'at least $a upper case letter(s)';
+$string['informpasswordpolicy'] = 'The password must have $a';
 ?>

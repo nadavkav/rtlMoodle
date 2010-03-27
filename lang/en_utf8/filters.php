@@ -1,4 +1,4 @@
-<?php //$Id: filters.php,v 1.3.2.2 2007/12/19 17:38:44 skodak Exp $
+<?php //$Id: filters.php,v 1.3.2.3 2009/12/18 05:24:14 dongsheng Exp $
 $string['actfilterhdr'] = 'Active filters';
 $string['addfilter'] = 'Add filter';
 $string['anycategory'] = 'any category';
@@ -19,6 +19,7 @@ $string['doesnotcontain'] = 'doesn\'t contain';
 $string['endswith'] = 'ends with';
 $string['firstaccess'] = 'First access';
 $string['globalrolelabel'] = '$a->label is $a->value';
+$string['includenever'] = 'Never included';
 $string['isanyvalue'] = 'is any value';
 $string['isafter'] = 'is after';
 $string['isbefore'] = 'is before';

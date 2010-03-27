@@ -1,4 +1,4 @@
-<?php  // $Id: view.php,v 1.61.2.6 2009/03/11 02:21:45 dongsheng Exp $
+<?php  // $Id: view.php,v 1.61.2.7 2009/11/30 17:12:17 sam_marshall Exp $
 
 /// This page prints a particular instance of chat
 
@@ -108,7 +108,7 @@
                 /// Check to see if groups are being used here
                 $groupmode = groups_get_activity_groupmode($cm);
                 $currentgroup = groups_get_activity_group($cm, true);
-                groups_print_activity_menu($cm, "view.php?id=$cm->id");
+                groups_print_activity_menu($cm, $CFG->wwwroot . "/mod/chat/view.php?id=$cm->id");
 
                 if ($currentgroup) {
                     $groupselect = " AND groupid = '$currentgroup'";

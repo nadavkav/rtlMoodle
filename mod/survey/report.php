@@ -1,4 +1,4 @@
-<?php // $Id: report.php,v 1.53.2.1 2007/10/12 16:09:38 tjhunt Exp $
+<?php // $Id: report.php,v 1.53.2.2 2009/11/30 17:12:18 sam_marshall Exp $
 
     require_once("../../config.php");
     require_once("lib.php");
@@ -74,7 +74,7 @@
     if ($groupmode = groups_get_activity_groupmode($cm)) {   // Groups are being used
         $menuaction = $action == "student" ? "students" : $action;
         $currentgroup = groups_get_activity_group($cm, true);
-        groups_print_activity_menu($cm, "report.php?id=$cm->id&amp;action=$menuaction&amp;qid=$qid");
+        groups_print_activity_menu($cm, $CFG->wwwroot . "/mod/survey/report.php?id=$cm->id&amp;action=$menuaction&amp;qid=$qid");
     } else {
         $currentgroup = 0;
     }

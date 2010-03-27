@@ -1,4 +1,4 @@
-<?php //$Id: block_quiz_results.php,v 1.26.2.3 2008/11/06 06:14:12 tjhunt Exp $
+<?php //$Id: block_quiz_results.php,v 1.26.2.4 2010/02/24 08:51:16 poltawski Exp $
 
 define('B_QUIZRESULTS_NAME_FORMAT_FULL', 1);
 define('B_QUIZRESULTS_NAME_FORMAT_ID',   2);
@@ -337,7 +337,7 @@ class block_quiz_results extends block_base {
                 foreach($best as $userid => $gradeid) {
                     switch($nameformat) {
                         case B_QUIZRESULTS_NAME_FORMAT_ID:
-                            $thisname = $course->student.' '.intval($users[$userid]->idnumber);
+                            $thisname = $course->student.' '.$users[$userid]->idnumber;
                         break;
                         case B_QUIZRESULTS_NAME_FORMAT_ANON:
                             $thisname = $course->student;

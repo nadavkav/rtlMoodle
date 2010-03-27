@@ -1,6 +1,6 @@
-<?php  // $Id: questiontype.php,v 1.14.4.15 2009/11/19 10:04:27 skodak Exp $
+<?php  // $Id: questiontype.php,v 1.14.4.16 2009/12/17 21:50:53 pichetp Exp $
 /**
- * @version $Id: questiontype.php,v 1.14.4.15 2009/11/19 10:04:27 skodak Exp $
+ * @version $Id: questiontype.php,v 1.14.4.16 2009/12/17 21:50:53 pichetp Exp $
  * @author Martin Dougiamas and many others. Tim Hunt.
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package questionbank
@@ -366,9 +366,16 @@ class question_numerical_qtype extends question_shortanswer_qtype {
             $tmpunits[$unit->unit] = $unit->multiplier;
         }
         // remove spaces and normalise decimal places.
+        $rawresponse = trim($rawresponse) ;
         $search  = array(' ', ',');
-        $replace = array('', '.');
-        $rawresponse = str_replace($search, $replace, trim($rawresponse));
+        // test if a . is present or there are multiple , (i.e. 2,456,789 ) so that we don't need spaces and ,
+        if ( strpos($rawresponse,'.' ) !== false || substr_count($rawresponse,',') > 1 ) {
+            $replace = array('', '');
+        }else { // remove spaces and normalise , to a . . 
+            $replace = array('', '.');
+        }
+        $rawresponse = str_replace($search, $replace, $rawresponse);
+
 
         // Apply any unit that is present.
         if (ereg('^([+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][-+]?[0-9]+)?)([^0-9].*)?$',

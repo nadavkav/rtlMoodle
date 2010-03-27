@@ -1,4 +1,4 @@
-<?php  // $Id: signup_form.php,v 1.35.2.8 2009/11/19 10:32:12 skodak Exp $
+<?php  // $Id: signup_form.php,v 1.35.2.10 2010/01/14 20:46:31 mudrd8mz Exp $
 
 require_once($CFG->libdir.'/formslib.php');
 require_once($CFG->dirroot.'/user/profile/lib.php');
@@ -16,6 +16,9 @@ class login_signup_form extends moodleform {
         $mform->setType('username', PARAM_NOTAGS);
         $mform->addRule('username', get_string('missingusername'), 'required', null, 'server');
 
+        if (!empty($CFG->passwordpolicy)){
+            $mform->addElement('static', 'passwordpolicyinfo', '', print_password_policy());
+        }
         $mform->addElement('passwordunmask', 'password', get_string('password'), 'maxlength="32" size="12"');
         $mform->setType('password', PARAM_RAW);
         $mform->addRule('password', get_string('missingpassword'), 'required', null, 'server');

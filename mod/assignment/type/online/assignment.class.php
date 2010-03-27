@@ -1,4 +1,4 @@
-<?php // $Id: assignment.class.php,v 1.46.2.8 2008/07/24 11:11:58 skodak Exp $
+<?php // $Id: assignment.class.php,v 1.46.2.9 2010/03/07 15:23:58 skodak Exp $
 require_once($CFG->libdir.'/formslib.php');
 
 /**
@@ -55,7 +55,7 @@ class assignment_online extends assignment_base {
                 $defaults->text   = format_text($submission->data1, $submission->data2, $options);
                 $defaults->format = FORMAT_HTML;
             } else {
-                $defaults->text   = $submission->data1;
+                $defaults->text   = clean_text($submission->data1, $submission->data2);
                 $defaults->format = $submission->data2;
             }
         }

@@ -1,4 +1,4 @@
-<?php  //$Id: componentlib.class.php,v 1.7.2.6 2008/04/02 06:10:01 dongsheng Exp $
+<?php  //$Id: componentlib.class.php,v 1.7.2.7 2009/12/03 00:59:55 andyjdavis Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -477,7 +477,9 @@ class component_installer {
                         continue;
                     }
                     $component[0]=trim($component[0]);
-                    $component[1]=trim($component[1]);
+                    if (!empty($component[1])) {
+                        $component[1]=trim($component[1]);
+                    }
                     if (!empty($component[2])) {
                         $component[2]=trim($component[2]);
                     }

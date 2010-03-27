@@ -1,4 +1,4 @@
-<?php //$Id: editadvanced_form.php,v 1.14.2.16 2009/11/19 10:03:48 skodak Exp $
+<?php //$Id: editadvanced_form.php,v 1.14.2.18 2010/01/14 20:46:32 mudrd8mz Exp $
 
 require_once($CFG->dirroot.'/lib/formslib.php');
 
@@ -36,6 +36,9 @@ class user_editadvanced_form extends moodleform {
         $mform->setHelpButton('auth', array('authchange', get_string('chooseauthmethod','auth')));
         $mform->setAdvanced('auth');
 
+        if (!empty($CFG->passwordpolicy)){
+            $mform->addElement('static', 'passwordpolicyinfo', '', print_password_policy());
+        }
         $mform->addElement('passwordunmask', 'newpassword', get_string('newpassword'), 'size="20"');
         $mform->setHelpButton('newpassword',array('newpassword', get_string('leavetokeep')));
         $mform->setType('newpassword', PARAM_RAW);
@@ -139,7 +142,6 @@ class user_editadvanced_form extends moodleform {
             }
             //check allowed characters
             if ($usernew->username !== moodle_strtolower($usernew->username)) {
-                echo 'grrrr';
                 $err['username'] = get_string('usernamelowercase');
             } else {
                 if (empty($CFG->extendedusernamechars)) {

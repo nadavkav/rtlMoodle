@@ -1,4 +1,4 @@
-<?php  // $Id: questiontype.php,v 1.20.2.12 2009/03/16 01:52:24 tjhunt Exp $
+<?php  // $Id: questiontype.php,v 1.20.2.13 2010/01/14 01:17:37 pichetp Exp $
 
 ///////////////////
 /// SHORTANSWER ///
@@ -305,7 +305,7 @@ class question_shortanswer_qtype extends default_questiontype {
                     echo ' partiallycorrect">';
                     print_string('partiallycorrect', 'quiz');
                     // MDL-7496
-                    if ($correctanswer) {
+                    if ($correctanswer != '') {
                         echo ('<div class="correctness">');
                         print_string('correctansweris', 'quiz', s($correctanswer, true));
                         echo ('</div>');
@@ -314,7 +314,7 @@ class question_shortanswer_qtype extends default_questiontype {
                     echo ' incorrect">';
                     // MDL-7496
                     print_string('incorrect', 'quiz');
-                    if ($correctanswer) {
+                    if ($correctanswer != '') {
                         echo ('<div class="correctness">');
                         print_string('correctansweris', 'quiz', s($correctanswer, true));
                         echo ('</div>');

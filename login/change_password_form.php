@@ -1,11 +1,11 @@
-<?php //$Id: change_password_form.php,v 1.11.2.2 2009/09/28 16:16:24 skodak Exp $
+<?php //$Id: change_password_form.php,v 1.11.2.4 2010/01/14 20:46:31 mudrd8mz Exp $
 
 require_once $CFG->libdir.'/formslib.php';
 
 class login_change_password_form extends moodleform {
 
     function definition() {
-        global $USER;
+        global $USER, $CFG;
 
         $mform =& $this->_form;
 
@@ -14,6 +14,9 @@ class login_change_password_form extends moodleform {
         // visible elements
         $mform->addElement('static', 'username', get_string('username'), $USER->username);
 
+        if (!empty($CFG->passwordpolicy)){
+            $mform->addElement('static', 'passwordpolicyinfo', '', print_password_policy());
+        }
         $mform->addElement('password', 'password', get_string('oldpassword'));
         $mform->addRule('password', get_string('required'), 'required', null, 'client');
         $mform->setType('password', PARAM_RAW);

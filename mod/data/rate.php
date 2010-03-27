@@ -1,4 +1,4 @@
-<?php  // $Id: rate.php,v 1.11.2.1 2009/05/06 10:16:54 stronk7 Exp $
+<?php  // $Id: rate.php,v 1.11.2.2 2010/01/13 16:47:42 stronk7 Exp $
     require_once('../../config.php');
     require_once('lib.php');
 
@@ -14,6 +14,8 @@
 
     if (!$cm = get_coursemodule_from_instance('data', $data->id)) {
         error("Course Module ID was incorrect");
+    } else {
+        $data->cmidnumber = $cm->id; //MDL-12961
     }
 
     require_login($course, false, $cm);

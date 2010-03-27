@@ -1,4 +1,4 @@
-<?php  // $Id: view.php,v 1.67.2.6 2009/10/16 11:12:34 mudrd8mz Exp $
+<?php  // $Id: view.php,v 1.67.2.7 2009/11/30 17:12:17 sam_marshall Exp $
 
 /*************************************************
     ACTIONS handled are:
@@ -308,7 +308,7 @@
         /// find out current groups mode
         $groupmode = groups_get_activity_groupmode($cm);
         $currentgroup = groups_get_activity_group($cm, true);
-        groups_print_activity_menu($cm, "view.php?id=$cm->id");
+        groups_print_activity_menu($cm, $CFG->wwwroot . "/mod/workshop/view.php?id=$cm->id");
 
         /// Print admin links
         echo "<table width=\"100%\"><tr><td>";

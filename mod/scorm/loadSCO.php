@@ -1,4 +1,4 @@
-<?php  // $Id: loadSCO.php,v 1.33.4.10 2008/12/09 20:38:28 danmarsden Exp $
+<?php  // $Id: loadSCO.php,v 1.33.4.11 2010/01/13 22:42:03 danmarsden Exp $
     require_once('../../config.php');
     require_once('locallib.php');
 
@@ -78,10 +78,11 @@
     }
 
     if ($version == 'AICC') {
+        $sco_params = '';
         if (isset($sco->parameters) && (!empty($sco->parameters))) {
-            $sco->parameters = '&'. $sco->parameters;
+            $sco_params = '&'. $sco->parameters;
         }
-        $launcher = $sco->launch.$connector.'aicc_sid='.sesskey().'&aicc_url='.$CFG->wwwroot.'/mod/scorm/aicc.php'.$sco->parameters;
+        $launcher = $sco->launch.$connector.'aicc_sid='.sesskey().'&aicc_url='.$CFG->wwwroot.'/mod/scorm/aicc.php'.$sco_params;
     } else {
         if (isset($sco->parameters) && (!empty($sco->parameters))) {
             $launcher = $sco->launch.$connector.$sco->parameters;

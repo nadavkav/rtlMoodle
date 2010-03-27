@@ -1,4 +1,4 @@
-<?PHP // $Id: role.php,v 1.47.2.21 2009/11/19 23:55:25 stronk7 Exp $
+<?PHP // $Id: role.php,v 1.47.2.22 2009/12/30 17:17:10 stronk7 Exp $
       // role.php - created with Moodle 1.7 beta + (2006101003)
 
 
@@ -130,6 +130,7 @@ $string['resetrolenolegacy'] = 'Clear permissions';
 $string['resetrolesure'] = 'Are you sure that you want to reset role \"$a->name ($a->shortname)\" to defaults?<p></p>The defaults are taken from the selected legacy capability ($a->legacytype).';
 $string['resetrolesurenolegacy'] = 'Are you sure that you want to clear all permissions defined in this role \"$a->name ($a->shortname)\"?';
 $string['restore:rolldates'] = 'Allowed to roll activity configuration dates on restore';
+$string['restore:createuser'] = 'Create users on restore';
 $string['restore:userinfo'] = 'Restore user data';
 $string['risks'] = 'Risks';
 $string['role:assign'] = 'Assign roles to users';

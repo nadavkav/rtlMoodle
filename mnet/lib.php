@@ -1,4 +1,4 @@
-<?php // $Id: lib.php,v 1.16.2.13 2009/11/19 10:34:26 skodak Exp $
+<?php // $Id: lib.php,v 1.16.2.14 2010/02/18 03:11:52 mjollnir_ Exp $
 /**
  * Library functions for mnet
  *
@@ -352,6 +352,20 @@ function mnet_generate_keypair($dn = null, $days=28) {
            "commonName" => $CFG->wwwroot,
            "emailAddress" => $email
         );
+    }
+
+    $dnlimits = array(
+           'countryName'            => 2,
+           'stateOrProvinceName'    => 128,
+           'localityName'           => 128,
+           'organizationName'       => 64,
+           'organizationalUnitName' => 64,
+           'commonName'             => 64,
+           'emailAddress'           => 128
+    );
+
+    foreach ($dnlimits as $key => $length) {
+        $dn[$key] = substr($dn[$key], 0, $length);
     }
 
     // ensure we remove trailing slashes

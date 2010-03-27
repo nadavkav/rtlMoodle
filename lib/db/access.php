@@ -1,4 +1,4 @@
-<?php  // $Id: access.php,v 1.75.2.22 2009/11/19 23:55:25 stronk7 Exp $
+<?php  // $Id: access.php,v 1.75.2.25 2010/02/19 19:13:31 poltawski Exp $
 //
 // Capability definitions for Moodle core.
 //
@@ -187,6 +187,17 @@ $moodle_capabilities = array(
         'contextlevel' => CONTEXT_COURSE,
         'legacy' => array(
             'editingteacher' => CAP_ALLOW,
+            'admin' => CAP_ALLOW
+        )
+    ),
+
+    'moodle/restore:createuser' => array(
+
+        'riskbitmask' => RISK_SPAM | RISK_PERSONAL,
+
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'legacy' => array(
             'admin' => CAP_ALLOW
         )
     ),

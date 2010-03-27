@@ -1,4 +1,4 @@
-<?php  // $Id: questiontype.php,v 1.41.2.20 2009/11/24 20:29:44 pichetp Exp $
+<?php  // $Id: questiontype.php,v 1.41.2.21 2010/01/14 21:56:42 pichetp Exp $
 
 ///////////////////
 /// MULTIANSWER /// (Embedded - cloze)
@@ -313,7 +313,7 @@ class embedded_cloze_qtype extends default_questiontype {
                             }
                         }
                     }
-                    if ($correctanswer) {
+                    if ($correctanswer  != '') {
                         $feedback = '<div class="correctness">';
                         $feedback .= get_string('correctansweris', 'quiz', s($correctanswer, true));
                         $feedback .= '</div>';

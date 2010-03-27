@@ -1,4 +1,4 @@
-<?PHP // $Id: change_password.php,v 1.62.2.2 2008/07/06 17:55:57 skodak Exp $
+<?PHP // $Id: change_password.php,v 1.62.2.3 2009/11/26 07:25:31 samhemelryk Exp $
 
     require_once('../config.php');
     require_once('change_password_form.php');
@@ -105,7 +105,8 @@
     $navlinks[] = array('name' => $fullname, 'link' => "$CFG->wwwroot/user/view.php?id=$USER->id&amp;course=$course->id", 'type' => 'misc');
     $navlinks[] = array('name' => $strchangepassword, 'link' => null, 'type' => 'misc');
     $navigation = build_navigation($navlinks);
-
+    // Turn off pop-up messaging window for this page
+    $CFG->messaging = 0;
     print_header($strchangepassword, $strchangepassword, $navigation);
     if (get_user_preferences('auth_forcepasswordchange')) {
         notify(get_string('forcepasswordchangenotice'));

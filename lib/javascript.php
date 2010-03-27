@@ -1,4 +1,4 @@
-<?php  /// $Id: javascript.php,v 1.36.2.4 2009/03/31 03:24:15 tjhunt Exp $
+<?php  /// $Id: javascript.php,v 1.36.2.3 2008/07/18 07:14:12 scyrma Exp $
        /// Load up any required Javascript libraries
 
     if (!defined('MOODLE_INTERNAL')) {
@@ -35,6 +35,19 @@ setTimeout('fix_column_widths()', 20);
 //<![CDATA[
 function openpopup(url, name, options, fullscreen) {
     var fullurl = "<?php echo $CFG->httpswwwroot ?>" + url;
+<?php
+   //code to add session id to url params if necessary for cookieless sessions
+   if (!empty($CFG->usesid) && !isset($_COOKIE[session_name()])){
+       $sessionparams = session_name() .'='. session_id();
+       echo <<<EOF
+   if (-1 == fullurl.indexOf('?')){
+	   fullurl = fullurl+'?$sessionparams';
+   } else {
+	   fullurl = fullurl+'&$sessionparams';
+   }
+EOF;
+   }
+?>
     var windowobj = window.open(fullurl, name, options);
     if (!windowobj) {
         return true;

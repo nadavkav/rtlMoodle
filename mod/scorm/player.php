@@ -1,4 +1,4 @@
-<?PHP  // $Id: player.php,v 1.34.2.11 2009/11/19 10:40:17 skodak Exp $
+<?PHP  // $Id: player.php,v 1.34.2.12 2009/12/18 06:42:38 danmarsden Exp $
 
 /// This page prints a particular instance of aicc/scorm package
 
@@ -15,6 +15,11 @@
     $currentorg = optional_param('currentorg', '', PARAM_RAW); // selected organization
     $newattempt = optional_param('newattempt', 'off', PARAM_ALPHA); // the user request to start a new attempt
 
+    //IE 6 Bug workaround
+    if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 6') !== false && ini_get('zlib.output_compression') == 'On') {
+        ini_set('zlib.output_compression', 'Off');
+    }
+    
     if (!empty($id)) {
         if (! $cm = get_coursemodule_from_id('scorm', $id)) {
             error("Course Module ID was incorrect");

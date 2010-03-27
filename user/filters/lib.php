@@ -1,4 +1,4 @@
-<?php //$Id: lib.php,v 1.1.2.5 2009/05/13 05:35:38 jerome Exp $
+<?php //$Id: lib.php,v 1.1.2.6 2009/12/18 05:24:14 dongsheng Exp $
 
 require_once($CFG->dirroot.'/user/filters/text.php');
 require_once($CFG->dirroot.'/user/filters/date.php');
@@ -35,7 +35,7 @@ class user_filtering {
         if (empty($fieldnames)) {
             $fieldnames = array('realname'=>0, 'lastname'=>1, 'firstname'=>1, 'email'=>1, 'city'=>1, 'country'=>1,
                                 'confirmed'=>1, 'profile'=>1, 'courserole'=>1, 'systemrole'=>1,
-                                'firstaccess'=>1, 'lastaccess'=>1, 'lastlogin'=>1, 'username'=>1, 'auth'=>1, 'mnethostid'=>1);
+                                'firstaccess'=>1, 'lastaccess'=>1, 'lastlogin'=>1, 'timemodified'=>1, 'username'=>1, 'auth'=>1, 'mnethostid'=>1);
         }
 
         $this->_fields  = array();
@@ -114,6 +114,7 @@ class user_filtering {
             case 'firstaccess': return new user_filter_date('firstaccess', get_string('firstaccess', 'filters'), $advanced, 'firstaccess');
             case 'lastaccess':  return new user_filter_date('lastaccess', get_string('lastaccess'), $advanced, 'lastaccess');
             case 'lastlogin':   return new user_filter_date('lastlogin', get_string('lastlogin'), $advanced, 'lastlogin');
+            case 'timemodified': return new user_filter_date('timemodified', get_string('lastmodified'), $advanced, 'timemodified');
             case 'auth':
                 $plugins = get_list_of_plugins('auth');
                 $choices = array();

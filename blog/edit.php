@@ -1,4 +1,4 @@
-<?php //$Id: edit.php,v 1.49.2.12 2008/07/07 07:40:35 scyrma Exp $
+<?php //$Id: edit.php,v 1.49.2.13 2010/03/07 15:16:19 skodak Exp $
 
 require_once('../config.php');
 include_once('lib.php');
@@ -108,8 +108,8 @@ switch ($action) {
             error('Incorrect blog post id');
         }
         $post->id           = $existing->id;
-        $post->subject      = $existing->subject;
-        $post->summary      = $existing->summary;
+        $post->subject      = clean_text($existing->subject);
+        $post->summary      = clean_text($existing->summary, $existing->format);
         $post->publishstate = $existing->publishstate;
         $post->format       = $existing->format;
         $post->action       = $action;

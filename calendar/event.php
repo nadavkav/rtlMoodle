@@ -1,4 +1,4 @@
-<?php // $Id: event.php,v 1.74.2.7 2009/11/19 19:26:38 skodak Exp $
+<?php // $Id: event.php,v 1.74.2.8 2010/03/07 15:10:15 skodak Exp $
 
 /////////////////////////////////////////////////////////////////////////////
 //                                                                         //
@@ -334,9 +334,9 @@
 
         case 'edit':
             if(empty($form)) {
-                $form->name = $event->name;
+                $form->name = clean_text($event->name);
                 $form->courseid = $event->courseid; // Not to update, but for date validation
-                $form->description = $event->description;
+                $form->description = clean_text($event->description);
                 $form->timestart = $event->timestart;
                 $form->timeduration = $event->timeduration;
                 $form->id = $event->id;

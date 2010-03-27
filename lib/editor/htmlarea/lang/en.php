@@ -1,4 +1,4 @@
-<?php // $Id: en.php,v 1.4.10.1 2009/05/07 05:30:10 dongsheng Exp $
+<?php // $Id: en.php,v 1.4.10.2 2010/01/14 10:20:29 mudrd8mz Exp $
     include("../../../../config.php");
     $lastmodified = filemtime("en.php");
     $lifetime = 1800;
@@ -59,6 +59,7 @@ HTMLArea.I18N = {
         forecolor:      "<?php print_string("forecolor","editor") ?>",
         hilitecolor:    "<?php print_string("hilitecolor","editor") ?>",
         inserthorizontalrule: "<?php print_string("horizontalrule","editor") ?>",
+        createanchor:   "<?php print_string("createanchor","editor") ?>",
         createlink:     "<?php print_string("createlink","editor") ?>",
         unlink:         "<?php print_string("removelink","editor") ?>",
         nolink:         "<?php print_string("nolink","editor") ?>",

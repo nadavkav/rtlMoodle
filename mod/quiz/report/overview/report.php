@@ -2,7 +2,7 @@
 /**
  * This script lists student attempts
  *
- * @version $Id: report.php,v 1.98.2.49 2009/09/18 13:42:19 tjhunt Exp $
+ * @version $Id: report.php,v 1.98.2.50 2010/02/04 04:37:32 rwijaya Exp $
  * @author Martin Dougiamas, Tim Hunt and others.
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package quiz
@@ -466,10 +466,10 @@ class quiz_report extends quiz_default_report {
                     }
                     if (!$download){
                         $userlink = '<a href="'.$CFG->wwwroot.'/user/view.php?id='.$attempt->userid.
-                                '&amp;course='.$course->id.'">'.fullname($attempt).'</a>';
+                                '&amp;course='.$course->id.'">'.fullname($attempt,has_capability('moodle/site:viewfullnames', $context)).'</a>';
                         $row[] = $userlink;
                     } else {
-                        $row[] = fullname($attempt);
+                        $row[] = fullname($attempt, has_capability('moodle/site:viewfullnames', $context));
                     }
                     
                     if (in_array('idnumber', $columns)){

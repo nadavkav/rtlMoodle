@@ -1,4 +1,4 @@
-<?php  // $Id: edit.php,v 1.32.2.7 2009/03/23 21:22:52 thepurpleblob Exp $
+<?php  // $Id: edit.php,v 1.32.2.8 2009/11/30 17:12:16 sam_marshall Exp $
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
 // NOTICE OF COPYRIGHT                                                   //
@@ -115,7 +115,7 @@
                         navmenu($course, $cm), '', '');
 
 /// Check to see if groups are being used here
-    groups_print_activity_menu($cm, 'edit.php?d='.$data->id);
+    groups_print_activity_menu($cm, $CFG->wwwroot . '/mod/data/edit.php?d='.$data->id);
     $currentgroup = groups_get_activity_group($cm);
     $groupmode = groups_get_activity_groupmode($cm);
 

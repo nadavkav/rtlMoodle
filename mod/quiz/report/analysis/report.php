@@ -1,4 +1,4 @@
-<?php  // $Id: report.php,v 1.41.2.8 2008/11/27 04:48:11 tjhunt Exp $
+<?php  // $Id: report.php,v 1.41.2.9 2009/11/30 17:12:17 sam_marshall Exp $
 
     require_once($CFG->libdir.'/tablelib.php');
 
@@ -25,7 +25,7 @@ class quiz_report extends quiz_default_report {
         
         if ($groupmode = groups_get_activity_groupmode($cm)) {   // Groups are being used
             if (!$download) {
-                groups_print_activity_menu($cm, "report.php?id=$cm->id&amp;mode=analysis");
+                groups_print_activity_menu($cm, $CFG->wwwroot . "/mod/quiz/report.php?id=$cm->id&amp;mode=analysis");
             }
         }
 

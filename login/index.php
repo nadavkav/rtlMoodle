@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.129.2.9 2009/11/19 10:32:12 skodak Exp $
+<?php // $Id: index.php,v 1.129.2.10 2010/01/11 22:05:47 mjollnir_ Exp $
 
 
     require_once("../config.php");
@@ -235,10 +235,16 @@ httpsrequired();
                 $errorcode = 3;
             }
 
-            // TODO: if the user failed to authenticate, check if the username corresponds to a remote mnet user
             if ( !empty($CFG->mnet_dispatcher_mode)
                  && $CFG->mnet_dispatcher_mode === 'strict'
-                 && is_enabled_auth('mnet')) {
+                 && is_enabled_auth('mnet')
+                 && record_exists_sql("SELECT h.id FROM {$CFG->prefix}mnet_host h
+                    INNER JOIN {$CFG->prefix}mnet_host2service m ON h.id=m.hostid
+                    INNER JOIN {$CFG->prefix}mnet_service s ON s.id=m.serviceid
+                    WHERE s.name='sso_sp' AND h.deleted=0 AND m.publish = 1")
+                && record_exists_select('user', "username = '{$frm->username}' AND mnethostid != {$CFG->mnet_localhost_id}")
+            ) {
+
                 $errormsg .= get_string('loginlinkmnetuser', 'mnet', "mnet_email.php?u=$frm->username");
             }
         }

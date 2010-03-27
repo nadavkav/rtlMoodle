@@ -1,4 +1,4 @@
-<?PHP // $Id: chat.php,v 1.5.8.7 2009/03/11 02:21:46 dongsheng Exp $ 
+<?PHP // $Id: chat.php,v 1.5.8.8 2009/12/04 03:51:20 dongsheng Exp $ 
       // chat.php - created with Moodle 1.7 beta + (2006101003)
 
 $string['autoscroll'] = 'Auto Scroll';
@@ -33,6 +33,9 @@ $string['explainmethodnormal'] = 'These settings matter <strong>only</strong> if
 $string['generalconfig'] = 'General configuration';
 $string['helpchatting'] = 'Help with chatting';
 $string['idle'] = 'Idle';
+$string['list_complete_sessions'] = 'List just complete sessions.';
+$string['list_all_sessions'] = 'List all sessions.';
+$string['listing_all_sessions'] = 'Listing all sessions.';
 $string['messagebeepseveryone'] = '$a beeps everyone!';
 $string['messagebeepsyou'] = '$a has just beeped you!';
 $string['messageenter'] = '$a has just entered this chat';
@@ -45,6 +48,7 @@ $string['modulename'] = 'Chat';
 $string['modulenameplural'] = 'Chats';
 $string['neverdeletemessages'] = 'Never delete messages';
 $string['nextsession'] = 'Next scheduled session';
+$string['no_complete_sessions_found'] = 'No complete sessions found.';
 $string['noguests'] = 'The chat is not open to guests';
 $string['nomessages'] = 'No messages yet';
 $string['normalkeepalive'] = 'KeepAlive';

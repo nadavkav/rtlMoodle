@@ -4,7 +4,7 @@ unset($CFG);
 
 $CFG->dbtype    = 'mysqli';
 $CFG->dbhost    = 'localhost';
-$CFG->dbname    = 'rtlMoodle_197';
+$CFG->dbname    = 'rtlMoodle_198';
 $CFG->dbuser    = 'rtlmoodleadmin';
 $CFG->dbpass    = 'rtlmoodleadmin';
 $CFG->dbpersist =  false;

@@ -1,4 +1,4 @@
-<?php  // $Id: questiontype.php,v 1.32.2.11 2009/01/23 02:19:36 tjhunt Exp $
+<?php  // $Id: questiontype.php,v 1.32.2.12 2010/02/23 12:47:07 tjhunt Exp $
 
 /////////////
 /// MATCH ///
@@ -400,18 +400,18 @@ class question_match_qtype extends default_questiontype {
 
     // ULPGC ecastro
     function get_actual_response($question, $state) {
-       $subquestions = &$state->options->subquestions;
-       $responses    = &$state->responses;
-       $results=array();
-       foreach ($subquestions as $key => $sub) {
-           foreach ($responses as $ind => $code) {
-               if (isset($sub->options->answers[$code])) {
-                   $results[$ind] =  $subquestions[$ind]->questiontext . ": " . $sub->options->answers[$code]->answer;
-               }
-           }
-       }
-       return $results;
-   }
+        $subquestions = &$state->options->subquestions;
+        $responses    = &$state->responses;
+        $results=array();
+        foreach ($responses as $ind => $code) {
+            foreach ($subquestions as $key => $sub) {
+                if (isset($sub->options->answers[$code])) {
+                    $results[$ind] =  $subquestions[$ind]->questiontext . ": " . $sub->options->answers[$code]->answer;
+                }
+            }
+        }
+        return $results;
+    }
 
     function response_summary($question, $state, $length=80) {
         // This should almost certainly be overridden

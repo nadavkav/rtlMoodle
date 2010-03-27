@@ -1,4 +1,4 @@
-<?php  // $Id: view.php,v 1.70.2.32 2009/09/27 18:07:53 skodak Exp $
+<?php  // $Id: view.php,v 1.70.2.33 2009/11/30 17:12:16 sam_marshall Exp $
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
 // NOTICE OF COPYRIGHT                                                   //
@@ -296,7 +296,7 @@
     }
 
 /// Check to see if groups are being used here
-    $returnurl = 'view.php?d='.$data->id.'&amp;search='.s($search).'&amp;sort='.s($sort).'&amp;order='.s($order).'&amp;';
+    $returnurl = $CFG->wwwroot . '/mod/data/view.php?d='.$data->id.'&amp;search='.s($search).'&amp;sort='.s($sort).'&amp;order='.s($order).'&amp;';
     groups_print_activity_menu($cm, $returnurl);
     $currentgroup = groups_get_activity_group($cm);
     $groupmode = groups_get_activity_groupmode($cm);

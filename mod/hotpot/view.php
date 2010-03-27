@@ -1,4 +1,4 @@
-<?PHP // $Id: view.php,v 1.38.2.9 2009/11/09 01:27:22 gbateson Exp $
+<?PHP // $Id: view.php,v 1.38.2.10 2010/02/11 02:52:22 gbateson Exp $
     /// This page prints a hotpot quiz
     if (defined('HOTPOT_FIRST_ATTEMPT') && HOTPOT_FIRST_ATTEMPT==false) {
         // this script is being included (by attempt.php)
@@ -37,7 +37,7 @@
         // make sure this user is enrolled in this course and can access this HotPot
         require_login($course);
         $context = get_context_instance(CONTEXT_MODULE, $cm->id);
-        require_capability('mod/hotpot:attempt', $context);
+        require_capability('mod/hotpot:attempt', $context, $USER->id);
     }
     // set nextpage (for error messages)
     $nextpage = "$CFG->wwwroot/course/view.php?id=$course->id";

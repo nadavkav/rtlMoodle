@@ -1,4 +1,4 @@
-<?PHP // $Id: lesson.php,v 1.25.2.6 2008/11/26 11:49:11 thepurpleblob Exp $ 
+<?PHP // $Id: lesson.php,v 1.25.2.7 2010/03/05 11:41:33 wildgirl Exp $ 
       // lesson.php - created with Moodle 1.7 beta + (2006101003)
 
 $string['accesscontrol'] = 'Access control';
@@ -255,7 +255,7 @@ $string['showanunseenpage'] = 'Show an Unseen Page';
 $string['singleanswer'] = 'Single Answer';
 $string['skip'] = 'Skip navigation';
 $string['slideshow'] = 'Slide Show';
-$string['slideshowbgcolor'] = 'Slide show background color';
+$string['slideshowbgcolor'] = 'Slide show background colour';
 $string['slideshowheight'] = 'Slide show height';
 $string['slideshowwidth'] = 'Slide show width';
 $string['startlesson'] = 'Start lesson';

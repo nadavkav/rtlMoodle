@@ -1,4 +1,4 @@
-<?php //$Id: edit_form.php,v 1.24.2.13 2009/09/27 19:13:22 skodak Exp $
+<?php //$Id: edit_form.php,v 1.24.2.14 2010/02/24 08:38:24 poltawski Exp $
 
 require_once($CFG->dirroot.'/lib/formslib.php');
 
@@ -63,12 +63,12 @@ class user_edit_form extends moodleform {
             }
         }
 
-        // remove description
-        if (empty($user->description) && !empty($CFG->profilesforenrolledusersonly) && !record_exists('role_assignments', 'userid', $userid)) {
-            $mform->removeElement('description');
-        }
 
         if ($user = get_record('user', 'id', $userid)) {
+            // remove description
+            if (empty($user->description) && !empty($CFG->profilesforenrolledusersonly) && !record_exists('role_assignments', 'userid', $userid)) {
+                $mform->removeElement('description');
+            }
 
             // print picture
             if (!empty($CFG->gdversion)) {

@@ -1,4 +1,4 @@
-<?php  // $Id: view.php,v 1.106.2.19 2009/11/02 06:29:24 moodler Exp $
+<?php  // $Id: view.php,v 1.106.2.20 2009/11/30 17:12:17 sam_marshall Exp $
 
     require_once('../../config.php');
     require_once('lib.php');
@@ -84,7 +84,7 @@
     }
 
 /// find out current groups mode
-    groups_print_activity_menu($cm, 'view.php?id=' . $cm->id);
+    groups_print_activity_menu($cm, $CFG->wwwroot . '/mod/forum/view.php?id=' . $cm->id);
     $currentgroup = groups_get_activity_group($cm);
     $groupmode = groups_get_activity_groupmode($cm);
 

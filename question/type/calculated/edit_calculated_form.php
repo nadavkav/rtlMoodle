@@ -1,4 +1,4 @@
-<?php  // $Id: edit_calculated_form.php,v 1.19.2.7 2009/11/19 10:48:17 skodak Exp $
+<?php  // $Id: edit_calculated_form.php,v 1.19.2.8 2009/12/18 02:35:47 pichetp Exp $
 /**
  * Defines the editing form for the calculated question type.
  *
@@ -21,7 +21,7 @@ class question_edit_calculated_form extends question_edit_form {
     var $qtypeobj;
 
     function get_per_answer_fields(&$mform, $label, $gradeoptions, &$repeatedoptions, &$answersoption) {
-        $repeated = parent::get_per_answer_fields(&$mform, $label, $gradeoptions, $repeatedoptions, $answersoption);
+        $repeated = parent::get_per_answer_fields($mform, $label, $gradeoptions, $repeatedoptions, $answersoption);
         $mform->setType('answer', PARAM_NOTAGS);
 
         $addrepeated = array();

@@ -1,4 +1,4 @@
-<?php  // $Id: rsslib.php,v 1.52.2.6 2009/07/29 05:59:01 tjhunt Exp $
+<?php  // $Id: rsslib.php,v 1.52.2.7 2010/01/15 14:36:48 sam_marshall Exp $
        // This file contains all the common stuff to be used in RSS System
 
 //This function returns the icon (from theme) with the link to rss/file.php
@@ -216,7 +216,7 @@ function rss_add_items($items) {
             if (isset($item->tags)) {
                 $attributes = array();
                 if (isset($item->tagscheme)) {
-                    $attributes['domain'] = $item->tagscheme;
+                    $attributes['domain'] = s($item->tagscheme);
                 }
                 foreach ($item->tags as $tag) {
                     $result .= rss_full_tag('category', 3, false, $tag, $attributes);

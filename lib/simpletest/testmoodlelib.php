@@ -256,8 +256,45 @@ class moodlelib_test extends UnitTestCase {
         $text = "<h3>standard 'break-out' sub groups in TGs?</h3>&nbsp;&lt;&lt;There are several";
         $this->assertEqual("<h3>standard 'break-out' sub groups in ...</h3>",
             shorten_text($text, 43));
+
+        $text = "<h1>123456789</h1>";//a string with no convenient breaks
+        $this->assertEqual("<h1>12345...</h1>",
+            shorten_text($text, 8));
+    }
+    
+    function test_usergetdate() {
+        $ts = 1261540267; //the time this function was created
+
+        $arr = usergetdate($ts,1);
+        $arr = array_values($arr);
+        
+        list($seconds,$minutes,$hours,$mday,$wday,$mon,$year,$yday,$weekday,$month) = $arr;
+        $this->assertEqual($seconds,7);
+        $this->assertEqual($minutes,51);
+        $this->assertEqual($hours,4);
+        $this->assertEqual($mday,23);
+        $this->assertEqual($wday,3);
+        $this->assertEqual($mon,12);
+        $this->assertEqual($year,2009);
+        $this->assertEqual($yday,357);
+        $this->assertEqual($weekday,'Wednesday');
+        $this->assertEqual($month,'December');
+
+        $arr = usergetdate($ts);
+        $arr = array_values($arr);
+
+        list($seconds,$minutes,$hours,$mday,$wday,$mon,$year,$yday,$weekday,$month) = $arr;
+        $this->assertEqual($seconds,7);
+        $this->assertEqual($minutes,51);
+        $this->assertEqual($hours,11);
+        $this->assertEqual($mday,23);
+        $this->assertEqual($wday,3);
+        $this->assertEqual($mon,12);
+        $this->assertEqual($year,2009);
+        $this->assertEqual($yday,356);
+        $this->assertEqual($weekday,'Wednesday');
+        $this->assertEqual($month,'December');
     }
 
 }
-
 ?>

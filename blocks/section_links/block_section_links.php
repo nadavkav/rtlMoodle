@@ -1,10 +1,10 @@
-<?PHP //$Id: block_section_links.php,v 1.25.2.2 2008/03/03 11:41:04 moodler Exp $
+<?PHP //$Id: block_section_links.php,v 1.25.2.4 2009/12/18 03:01:36 dongsheng Exp $
 
 class block_section_links extends block_base {
 
     function init() {
         $this->title = get_string('blockname', 'block_section_links');
-        $this->version = 2007101509;
+        $this->version = 2007101511;
     }
 
     function instance_config($instance) {
@@ -29,6 +29,11 @@ class block_section_links extends block_base {
         global $CFG, $USER, $COURSE;
 
         $highlight = 0;
+        if(isset($this->config)){
+            $config = $this->config;
+        } else{
+            $config = get_config('blocks/section_links');
+        }
 
         if ($this->content !== NULL) {
             return $this->content;
@@ -60,11 +65,21 @@ class block_section_links extends block_base {
             $sectionname = 'topic';
         }
         $inc = 1;
-        if ($course->numsections > 22) {
-            $inc = 2;
+
+        if(!empty($config->numsections1) and ($course->numsections > $config->numsections1)) {
+            $inc = $config->incby1;
+        } else {
+            if ($course->numsections > 22) {
+                $inc = 2;
+            }
         }
-        if ($course->numsections > 40) {
-            $inc = 5;
+
+        if(!empty($config->numsections2) and ($course->numsections > $config->numsections2)) {
+            $inc = $config->incby2;
+        } else {
+            if ($course->numsections > 40) {
+                $inc = 5;
+            }
         }
 
         if (!empty($USER->id)) {
@@ -111,6 +126,16 @@ class block_section_links extends block_base {
 
         $this->content->text = $text;
         return $this->content;
+    }
+    /**
+     * Has instance config
+     * @return boolean
+     **/
+    function instance_allow_config() {
+        return true;
+    }
+    function before_delete() {
+        delete_records('config_plugins', 'plugin', 'blocks/section_links');
     }
 }
 

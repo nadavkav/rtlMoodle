@@ -1,4 +1,4 @@
-<?php // $Id: assign.php,v 1.63.2.16 2009/04/07 23:48:00 arborrow Exp $
+<?php // $Id: assign.php,v 1.63.2.17 2010/02/12 16:33:54 sam_marshall Exp $
       // Script to assign users to contexts
 
     require_once('../../config.php');
@@ -325,7 +325,7 @@
                 if ($validroleids) {
                     $roleids =  '('.implode(',', $validroleids).')';
 
-                    $select = " SELECT u.id, u.firstname, u.lastname, u.email";
+                    $select = " SELECT DISTINCT u.id, u.firstname, u.lastname, u.email";
                     $countselect = "SELECT COUNT(u.id)";
                     $from   = " FROM {$CFG->prefix}user u
                                 INNER JOIN {$CFG->prefix}role_assignments ra ON ra.userid = u.id

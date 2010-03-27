@@ -1,4 +1,4 @@
-<?php // $Id: assignment.class.php,v 1.32.2.16 2009/11/20 08:25:32 skodak Exp $
+<?php // $Id: assignment.class.php,v 1.32.2.17 2010/03/07 15:24:18 skodak Exp $
 require_once($CFG->libdir.'/formslib.php');
 
 define('ASSIGNMENT_STATUS_SUBMITTED', 'submitted'); // student thinks it is finished
@@ -486,7 +486,7 @@ class assignment_upload extends assignment_base {
         $defaults->id = $this->cm->id;
 
         if ($submission = $this->get_submission($USER->id)) {
-            $defaults->text = $submission->data1;
+            $defaults->text = clean_text($submission->data1);
         } else {
             $defaults->text = '';
         }

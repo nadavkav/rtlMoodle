@@ -1,4 +1,4 @@
-<?php // $Id: grade_category.php,v 1.96.2.30 2009/04/29 13:44:18 skodak Exp $
+<?php // $Id: grade_category.php,v 1.96.2.31 2010/02/03 02:22:58 andyjdavis Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -1372,6 +1372,18 @@ class grade_category extends grade_object {
                 foreach($children as $child) {
                     $child->set_hidden($hidden, $cascade);
                 }
+            }
+        }
+
+        //if marking category visible make sure parent category is visible MDL-21367
+        if( !$hidden ) {
+            $category_array = grade_category::fetch_all(array('id'=>$this->parent));
+            if ($category_array && array_key_exists($this->parent, $category_array)) {
+                $category = $category_array[$this->parent];
+                //call set_hidden on the category regardless of whether it is hidden as its parent might be hidden
+                //if($category->is_hidden()) {
+                    $category->set_hidden($hidden, false);
+                //}
             }
         }
     }

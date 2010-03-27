@@ -1,4 +1,4 @@
-<?php  // $Id: datasetitems_form.php,v 1.9.2.6 2009/09/26 16:27:18 skodak Exp $
+<?php  // $Id: datasetitems_form.php,v 1.9.2.7 2009/12/20 13:19:01 pichetp Exp $
 class question_dataset_dependent_items_form extends moodleform {
     /**
      * Question object with options and answers already loaded by get_question_options
@@ -81,7 +81,7 @@ class question_dataset_dependent_items_form extends moodleform {
         foreach ($this->datasetdefs as $defkey => $datasetdef){
             $mform->addElement('text', "number[$j]", get_string('param', 'qtype_datasetdependent', $datasetdef->name));
             $mform->setType("number[$j]", PARAM_NUMBER);
-            $this->qtypeobj->custom_generator_tools_part(&$mform, $idx, $j);
+            $this->qtypeobj->custom_generator_tools_part($mform, $idx, $j);
             $idx++;
             $mform->addElement('hidden', "definition[$j]");
             $mform->setType("definition[$j]", PARAM_RAW);

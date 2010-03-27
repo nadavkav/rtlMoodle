@@ -1,4 +1,4 @@
-<?php // $Id: grade_item.php,v 1.130.2.33 2009/09/17 07:10:50 nicolasconnault Exp $
+<?php // $Id: grade_item.php,v 1.130.2.35 2010/02/03 02:22:58 andyjdavis Exp $
 
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
@@ -591,13 +591,25 @@ class grade_item extends grade_object {
     function set_hidden($hidden, $cascade=false) {
         $this->hidden = $hidden;
         $this->update();
-
+        
         if ($cascade) {
             if ($grades = grade_grade::fetch_all(array('itemid'=>$this->id))) {
                 foreach($grades as $grade) {
                     $grade->grade_item =& $this;
                     $grade->set_hidden($hidden, $cascade);
                 }
+            }
+        }
+
+        //if marking item visible make sure category is visible MDL-21367
+        if( !$hidden ) {
+            $category_array = grade_category::fetch_all(array('id'=>$this->categoryid));
+            if ($category_array && array_key_exists($this->categoryid, $category_array)) {
+                $category = $category_array[$this->categoryid];
+                //call set_hidden on the category regardless of whether it is hidden as its parent might be hidden
+                //if($category->is_hidden()) {
+                    $category->set_hidden($hidden, false);
+                //}
             }
         }
     }
@@ -1788,6 +1800,7 @@ class grade_item extends grade_object {
 
         // update in db if changed
         if (grade_floats_different($grade->finalgrade, $oldfinalgrade)) {
+            $grade->timemodified = time();
             $grade->update('compute');
         }
 

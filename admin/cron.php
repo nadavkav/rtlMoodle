@@ -1,4 +1,4 @@
-<?php // $Id: cron.php,v 1.126.2.19 2009/11/10 09:51:32 tjhunt Exp $
+<?php // $Id: cron.php,v 1.126.2.20 2010/03/04 17:06:19 mjollnir_ Exp $
 
 /// This script looks through all the module directories for cron.php files
 /// and runs them.  These files can contain cleanup functions, email functions
@@ -223,6 +223,9 @@
     grade_cron();
     mtrace('done.');
 
+    mtrace('Starting processing the event queue...');
+    events_cron();
+    mtrace('done.');
 
 /// Run all core cron jobs, but not every time since they aren't too important.
 /// These don't have a timer to reduce load, so we'll use a random number 

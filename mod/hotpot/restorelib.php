@@ -1,4 +1,4 @@
-<?PHP //$Id: restorelib.php,v 1.24.4.5 2009/09/25 06:21:45 gbateson Exp $
+<?PHP //$Id: restorelib.php,v 1.24.4.6 2010/03/15 10:16:00 gbateson Exp $
 //This php script contains all the stuff to restore hotpot mods
     //-----------------------------------------------------------
     // This is the "graphical" structure of the hotpot mod:
@@ -479,9 +479,20 @@ function hotpot_restore_logs($restore, $log) {
 }
 
 function hotpot_decode_content_links($content, $restore) {
-    $search = '/\$@(HOTPOT)\*([a-z]+)\*([a-z]+)\*([0-9]+)@\$/ise';
-    $replace = 'hotpot_decode_content_link("$2", "$3", "$4", $restore)';
-    return preg_replace($search, $replace, $content);
+    $search = '/\$@(HOTPOT)\*([a-z]+)\*([a-z]+)\*([0-9]+)@\$/is';
+    if (preg_match_all($search, $content, $matches, PREG_OFFSET_CAPTURE)) {
+        $i_max = count($matches[0]) - 1;
+        for ($i=$i_max; $i>=0; $i--) {
+            $start = $matches[0][$i][1];
+            $length = strlen($matches[0][$i][0]);
+            $replace = hotpot_decode_content_link(
+                // $scriptname, $paramname, $paramvalue, $restore
+                $matches[2][$i][0], $matches[3][$i][0], $matches[4][$i][0], $restore
+            );
+            $content = substr_replace($content, $replace, $start, $length);
+        }
+    }
+    return $content;
 }
 
 function hotpot_decode_content_link($scriptname, $paramname, $paramvalue, &$restore) {

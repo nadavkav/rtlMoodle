@@ -1,4 +1,4 @@
-<?php // $Id: confirm.php,v 1.29.2.1 2008/04/02 06:10:02 dongsheng Exp $
+<?php // $Id: confirm.php,v 1.29.2.2 2010/02/10 16:46:00 stronk7 Exp $
 
     require_once("../config.php");
 
@@ -19,7 +19,7 @@
     if (!empty($data) || (!empty($p) && !empty($s))) {
 
         if (!empty($data)) {
-            $dataelements = explode('/',$data);
+            $dataelements = explode('/',$data, 2); // Stop after 1st slash. Rest is username. MDL-7647
             $usersecret = $dataelements[0];
             $username   = $dataelements[1];
         } else {

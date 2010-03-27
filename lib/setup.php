@@ -5,7 +5,7 @@
  * Normally this is only called by the main config.php file
  * Normally this file does not need to be edited.
  * @author Martin Dougiamas
- * @version $Id: setup.php,v 1.212.2.27 2009/06/08 01:16:15 fmarier Exp $
+ * @version $Id: setup.php,v 1.212.2.29 2010/02/18 11:50:18 jamiesensei Exp $
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package moodlecore
  */
@@ -566,10 +566,7 @@ global $HTTPSPAGEREQUIRED;
     if (!empty($_COOKIE['MoodleSessionTest'.$CFG->sessioncookie]) && $_COOKIE['MoodleSessionTest'.$CFG->sessioncookie] == "deleted") {
         unset($_COOKIE['MoodleSessionTest'.$CFG->sessioncookie]);
     }
-    if (!empty($CFG->usesid) && empty($_COOKIE['MoodleSession'.$CFG->sessioncookie])) {
-        require_once("$CFG->dirroot/lib/cookieless.php");
-        sid_start_ob();
-    }
+
 
     if (empty($nomoodlecookie)) {
         session_name('MoodleSession'.$CFG->sessioncookie);
@@ -618,7 +615,9 @@ global $HTTPSPAGEREQUIRED;
         $FULLME = qualified_me();
         $ME = strip_querystring($FULLME);
     }
-
+    if (!empty($CFG->usesid) && empty($_COOKIE['MoodleSession'.$CFG->sessioncookie])) {
+        require_once("$CFG->dirroot/lib/cookieless.php");
+    }
 /// In VERY rare cases old PHP server bugs (it has been found on PHP 4.1.2 running
 /// as a CGI under IIS on Windows) may require that you uncomment the following:
 //  session_register("USER");

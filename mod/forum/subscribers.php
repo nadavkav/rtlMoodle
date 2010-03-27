@@ -1,4 +1,4 @@
-<?php  // $Id: subscribers.php,v 1.40.2.4 2009/11/21 15:27:10 skodak Exp $
+<?php  // $Id: subscribers.php,v 1.40.2.5 2009/11/30 17:12:17 sam_marshall Exp $
 
     require_once("../../config.php");
     require_once("lib.php");
@@ -50,7 +50,7 @@
     }
 
 /// Check to see if groups are being used in this forum
-    groups_print_activity_menu($cm, "subscribers.php?id=$forum->id");
+    groups_print_activity_menu($cm, $CFG->wwwroot . "/mod/forum/subscribers.php?id=$forum->id");
     $currentgroup = groups_get_activity_group($cm);
     $groupmode = groups_get_activity_groupmode($cm);
 
