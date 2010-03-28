@@ -4,10 +4,10 @@
 
     //This is the "graphical" structure of the forum mod:
     //
-    //                               forum                                      
+    //                               forum
     //                            (CL,pk->id)
     //                                 |
-    //         ---------------------------------------------------        
+    //         ---------------------------------------------------
     //         |                                                 |
     //    subscriptions                                  forum_discussions
     //(UL,pk->id, fk->forum)           ---------------(UL,pk->id, fk->forum)
@@ -16,7 +16,7 @@
     //                                 |                         |
     //                                 |                     forum_posts
     //                                 |-------------(UL,pk->id,fk->discussion,
-    //                                 |                  nt->parent,files) 
+    //                                 |                  nt->parent,files)
     //                                 |                         |
     //                                 |                         |
     //                                 |                         |
@@ -33,7 +33,7 @@
     //-----------------------------------------------------------
 
     function forum_restore_mods($mod,$restore) {
-        
+
         global $CFG,$db;
 
         $status = true;
@@ -57,7 +57,7 @@
             $forum->type = backup_todb($info['MOD']['#']['TYPE']['0']['#']);
             $forum->name = backup_todb($info['MOD']['#']['NAME']['0']['#']);
             $forum->intro = backup_todb($info['MOD']['#']['INTRO']['0']['#']);
-            
+
             // These get dropped in Moodle 1.7 when the new Roles System gets
             // set up. Therefore they might or not be there depending on whether
             // we are restoring a 1.6+ forum or a 1.7 or later forum backup.
@@ -67,8 +67,8 @@
             if (isset($info['MOD']['#']['ASSESSPUBLIC']['0']['#'])) {
                 $forum->assesspublic = backup_todb($info['MOD']['#']['ASSESSPUBLIC']['0']['#']);
             }
-            
-            $forum->assessed = backup_todb($info['MOD']['#']['ASSESSED']['0']['#']);  
+
+            $forum->assessed = backup_todb($info['MOD']['#']['ASSESSED']['0']['#']);
             $forum->assesstimestart = backup_todb($info['MOD']['#']['ASSESSTIMESTART']['0']['#']);
             $forum->assesstimefinish = backup_todb($info['MOD']['#']['ASSESSTIMEFINISH']['0']['#']);
             $forum->maxbytes = backup_todb($info['MOD']['#']['MAXBYTES']['0']['#']);
@@ -90,7 +90,7 @@
                     $forum->scale = -($scale->new_id);
                 }
             }
-            
+
             $newid = insert_record("forum", $forum);
 
 
@@ -149,7 +149,7 @@
                         set_field ('forum_posts','mailed', '1', 'discussion', $sdid);
                     }
                 }
-            
+
             } else {
                 $status = false;
             }
@@ -160,7 +160,7 @@
             if (isset($forum->open) && isset($forum->assesspublic)) {
 
                 $forummod = get_record('modules', 'name', 'forum');
-                
+
                 if (!$teacherroles = get_roles_with_capability('moodle/legacy:teacher', CAP_ALLOW)) {
                       notice('Default teacher role was not found. Roles and permissions '.
                              'for all your forums will have to be manually set.');
@@ -178,7 +178,7 @@
                                        $teacherroles, $studentroles, $guestroles,
                                        $restore->mods['forum']->instances[$mod->id]->restored_as_course_module);
             }
-            
+
         } else {
             $status = false;
         }
@@ -255,7 +255,7 @@
 
         //Get the discussions array
         $discussions = array();
-        
+
         if (!empty($info['MOD']['#']['DISCUSSIONS']['0']['#']['DISCUSSION'])) {
             $discussions = $info['MOD']['#']['DISCUSSIONS']['0']['#']['DISCUSSION'];
         }
@@ -282,7 +282,7 @@
             $discussion->assessed = backup_todb($dis_info['#']['ASSESSED']['0']['#']);
             $discussion->timemodified = backup_todb($dis_info['#']['TIMEMODIFIED']['0']['#']);
             $discussion->timemodified += $restore->course_startdateoffset;
-            $discussion->usermodified = backup_todb($dis_info['#']['USERMODIFIED']['0']['#']);  
+            $discussion->usermodified = backup_todb($dis_info['#']['USERMODIFIED']['0']['#']);
             $discussion->timestart = backup_todb($dis_info['#']['TIMESTART']['0']['#']);
             $discussion->timestart += $restore->course_startdateoffset;
             $discussion->timeend = backup_todb($dis_info['#']['TIMEEND']['0']['#']);
@@ -290,7 +290,7 @@
             //We have to recode the userid field
             $user = backup_getid($restore->backup_unique_code,"user",$discussion->userid);
             if ($user) {
-                $discussion->userid = $user->new_id;
+                //$discussion->userid = $user->new_id;  //(nadavkav) enable ldap restore
             }
 
             //We have to recode the groupid field
@@ -302,7 +302,8 @@
             //We have to recode the usermodified field
             $user = backup_getid($restore->backup_unique_code,"user",$discussion->usermodified);
             if ($user) {
-                $discussion->usermodified = $user->new_id;
+				//echo "old user usermodified={$discussion->usermodified} , new user id = {$user->new_id} <br/>\n";  //(nadavkav) enable ldap restore
+                //$discussion->usermodified = $user->new_id;  //(nadavkav) enable ldap restore
             }
 
             //The structure is equal to the db, so insert the forum_discussions
@@ -333,11 +334,11 @@
                     //Put its new firstpost
                     $discussion->firstpost = $rec->new_id;
                     if ($post = get_record("forum_posts", "id", $discussion->firstpost)) {
-                        $discussion->userid = $post->userid;
+                        //$discussion->userid = $post->userid; //(nadavkav) enable ldap restore
                     }
                 } else {
                      $discussion->firstpost = 0;
-                     $discussion->userid = 0;
+                     //$discussion->userid = 0; //(nadavkav) enable ldap restore
                 }
                 //Create temp discussion record
                 $temp_discussion->id = $newid;
@@ -465,11 +466,11 @@
             //Now, build the FORUM_POSTS record structure
             $post->discussion = $discussion_id;
             $post->parent = backup_todb($pos_info['#']['PARENT']['0']['#']);
-            $post->userid = backup_todb($pos_info['#']['USERID']['0']['#']);   
+            $post->userid = backup_todb($pos_info['#']['USERID']['0']['#']);
             $post->created = backup_todb($pos_info['#']['CREATED']['0']['#']);
             $post->created += $restore->course_startdateoffset;
             $post->modified = backup_todb($pos_info['#']['MODIFIED']['0']['#']);
-            $post->modified += $restore->course_startdateoffset;             
+            $post->modified += $restore->course_startdateoffset;
             $post->mailed = backup_todb($pos_info['#']['MAILED']['0']['#']);
             $post->subject = backup_todb($pos_info['#']['SUBJECT']['0']['#']);
             $post->message = backup_todb($pos_info['#']['MESSAGE']['0']['#']);
@@ -481,7 +482,8 @@
             //We have to recode the userid field
             $user = backup_getid($restore->backup_unique_code,"user",$post->userid);
             if ($user) {
-                $post->userid = $user->new_id;
+                echo "post->userid = {$post->userid}<br/>\n"; //(nadavkav) enable ldap restore
+                //$post->userid = $user->new_id; //(nadavkav) enable ldap restore
             }
 
             //The structure is equal to the db, so insert the forum_posts
@@ -530,9 +532,9 @@
                 $rec = backup_getid($restore->backup_unique_code,"forum_posts",$old_parent);
                 if ($rec) {
                     //Put its new parent
-                    $post->parent = $rec->new_id;
+                    //$post->parent = $rec->new_id; //(nadavkav) enable ldap restore
                 } else {
-                     $post->parent = 0;
+                     //$post->parent = 0;//(nadavkav) enable ldap restore
                 }
                 //Create temp post record
                 $temp_post->id = $post->id;
@@ -665,7 +667,7 @@
     //This function converts texts in FORMAT_WIKI to FORMAT_MARKDOWN for
     //some texts in the module
     function forum_restore_wiki2markdown ($restore) {
-    
+
         global $CFG;
 
         $status = true;
@@ -1132,7 +1134,7 @@
     function forum_decode_content_links_caller($restore) {
         global $CFG;
         $status = true;
-        
+
         //Process every POST (message) in the course
         if ($posts = get_records_sql ("SELECT p.id, p.message
                                    FROM {$CFG->prefix}forum_posts p,
